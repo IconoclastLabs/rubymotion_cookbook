@@ -10,7 +10,7 @@ class UsingSwitchesController < UIViewController
     @label.frame = [[50,50],[150,50]]
     view.addSubview(@label)
 
-    @switch = UISwitch.alloc.initWithFrame(CGRectMake(100,100,0,0))
+    @switch = UISwitch.alloc.initWithFrame([[100, 100], [0, 0]])
     @switch.addTarget(self,action:'switchIsChanged', forControlEvents:UIControlEventValueChanged)
     view.addSubview(@switch)    
   end
