@@ -2,6 +2,8 @@ class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     alert = alert("Ackbar says:", "It's a trap!", nil, "Cancel","OK")
     alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput
+    text = alert.textFieldAtIndex 0
+    text.keyboardType = UIKeyboardTypeNamePhonePad
     alert.show
     true
   end
@@ -17,3 +19,5 @@ module Kernel
     alert
   end
 end
+
+
