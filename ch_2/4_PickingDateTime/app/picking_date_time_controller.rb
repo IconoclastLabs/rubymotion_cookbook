@@ -4,7 +4,7 @@ class PickingDateTimeController < UIViewController
     @myDatePicker = UIDatePicker.alloc.init
     @myDatePicker.center = view.center
     # @myDatePicker.addTarget(self, action:'datePickerChanged', forControlEvents:UIControlEventValueChanged)
-    # @myDatePicker.datePickerMode = UIDatePickerDateAndTime
+     @myDatePicker.datePickerMode = UIDatePickerDateAndTime
     view.addSubview(@myDatePicker)
 
 
