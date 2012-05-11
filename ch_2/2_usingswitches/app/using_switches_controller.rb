@@ -3,10 +3,7 @@ class UsingSwitchesController < UIViewController
     view.backgroundColor = UIColor.whiteColor
    
     @label = UILabel.new
-    #@label.font = UIFont.systemFontSize(30)
     @label.text = 'Switch Status'
-    #@label.textAlignment = UITextAlignmentCenter
-    #@label.textColor = UIColor.blackColor
     @label.frame = [[50,50],[150,50]]
     view.addSubview(@label)
 
