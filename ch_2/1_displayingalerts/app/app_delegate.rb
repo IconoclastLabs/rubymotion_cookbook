@@ -1,6 +1,7 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     alert = alert("Ackbar says:", "It's a trap!", nil, "Cancel","OK")
+    alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput
     alert.show
     true
   end
