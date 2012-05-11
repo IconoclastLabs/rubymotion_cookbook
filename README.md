@@ -13,3 +13,10 @@ Additionally, we're aware that [BubbleWrap](https://github.com/mattetti/BubbleWr
 avoiding it. Wrapping difficult Cocoa libraries with elegant Ruby is a great idea, but we're attempting to map our
 examples 1:1 to the cookbook so that the body of the text remains relevant and using an external resource defeats
 that purpose.
+
+
+Difficulties
+------------
+
+Being inexperienced with Obj-C, we haven't yet figured out how to implement the UIPicker in Chapter 2.3. 
+Any insight would be appreciated.
