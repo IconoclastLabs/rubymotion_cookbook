@@ -1,19 +1,20 @@
 class PickingValuesController < UIViewController
   def viewDidLoad
-    view.backgroundColor = UIColor.whiteColor
-    @myPicker = UIPickerView.alloc.init titleForRow: 1
+    self.view.backgroundColor = UIColor.whiteColor
+    @myPicker = UIPickerView.alloc.init
     @myPicker.dataSource = self
+    @myPicker.center = self.view.center
     @myPicker.center = view.center
 
-    view.addSubview(@myPicker)
+    self.view.addSubview(@myPicker)
   end
 
-  def pickerView
-    if pickerView.equal = @myPicker
-      result = "Row #{row+1}"
-    end
-    result
+  def numberOfComponentsInPickerView pickerView
+    1 
   end
 
+  def pickerView(pickerView, numberOfRowsInComponent:component)
+    10
+  end
 
 end
