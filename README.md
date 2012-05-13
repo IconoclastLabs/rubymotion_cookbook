@@ -15,24 +15,3 @@ avoiding it. Wrapping difficult Cocoa libraries with elegant Ruby is a great ide
 examples 1:1 to the cookbook so that the body of the text remains relevant and using an external resource defeats
 that purpose.
 
-
-# Progress #
-
-## Chapter 2 - Implementing Controllers and Views  ##
-
-### 2.1 - Displaying Alerts with UIView
-[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/1_displayingalerts)
-### 2.2 - Creating and Using Switches with UISwitch
-[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/2_usingswitches)
-### 2.3 - Picking Values with UIPickerView
-[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/3_pickingvalues) 
-### 2.4 - Picking Date and Time with UIDatePicker
-[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/4_PickingDateTime)
-### 2.5 - Implementing Range Pickers with UISlider
-[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/5_rangepickers)
-### 2.6 - Grouping Compact Options
-[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/6_groupingoptions)
-### 2.7 - Presenting and Managing Views with UIViewController
-[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/7_managingviews)
-### 2.8 - Implementing Navigation with UINavigationController
-[In Progress]()
