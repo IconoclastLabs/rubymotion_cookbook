@@ -24,10 +24,9 @@ that purpose.
 ### 2.2 - Creating and Using Switches with UISwitch
 [Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/2_usingswitches)
 ### 2.3 - Picking Values with UIPickerView
-[Incomplete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/3_pickingvalues) 
-Being inexperienced with Obj-C, we haven't yet figured out how to implement the UIPicker. 
-Any insight would be appreciated.
+[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/3_pickingvalues) 
 ### 2.4 - Picking Date and Time with UIDatePicker
 [Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/4_PickingDateTime)
 ### 2.5 - Implementing Range Pickers with UISlider
 [In Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/5_rangepickers)
+Still need to add the resources to swap the picker's images.
