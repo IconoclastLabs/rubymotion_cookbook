@@ -29,5 +29,6 @@ that purpose.
 ### 2.4 - Picking Date and Time with UIDatePicker
 [Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/4_PickingDateTime)
 ### 2.5 - Implementing Range Pickers with UISlider
-[In Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/5_rangepickers)
-Still need to add the resources to swap the picker's images.
+[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/5_rangepickers)
+### 2.6 - Grouping Compact Options
+[In Progress]()
