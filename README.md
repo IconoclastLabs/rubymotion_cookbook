@@ -31,4 +31,6 @@ that purpose.
 ### 2.5 - Implementing Range Pickers with UISlider
 [Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/5_rangepickers)
 ### 2.6 - Grouping Compact Options
-[In Progress]()
+[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/6_groupingoptions)
+### 2.7 - Presenting and Managing Views with UIViewController
+[In Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/7_managingviews)
