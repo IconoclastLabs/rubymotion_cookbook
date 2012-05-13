@@ -33,4 +33,6 @@ that purpose.
 ### 2.6 - Grouping Compact Options
 [Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/6_groupingoptions)
 ### 2.7 - Presenting and Managing Views with UIViewController
-[In Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/7_managingviews)
+[Complete](https://github.com/IconoclastLabs/rubymotion_cookbook/tree/master/ch_2/7_managingviews)
+### 2.8 - Implementing Navigation with UINavigationController
+[In Progress]()
