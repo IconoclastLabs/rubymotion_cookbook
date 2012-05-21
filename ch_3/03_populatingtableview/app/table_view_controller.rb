@@ -5,7 +5,7 @@ class TableViewController < UITableViewController
     @myTableView.delegate = self
     @myTableView.dataSource = self
     @myTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth || UIViewAutoresizingFlexibleHeight
-    
+
     view.addSubview(@myTableView)
   end
 
@@ -15,42 +15,42 @@ class TableViewController < UITableViewController
     result
   end
 
-  def numberOfSectionsInTableViewi(tableView)
-    result = 0
-    if(tableView == @myTableView)
-      result = 3
-    end
+  # Required for TableView datasource protocol
+  # Sets the number of sections for the tableView
+  def numberOfRowsInSection(tableView)
+    result = 1
+    #if(tableView == @myTableView)
+    #  result = 3
+    #end
     result
   end
 
+  # Required for TableView datasource protocol
   def tableView(tableView, numberOfRowsInSection:section)
-    result = 0
-    case section
-    when 0
-      result = 3
-    when 1
-      result = 5
-    when 2
-      result = 8
-    else
-      result = 0
-    end
+    result = 1
+    #if(tableView == @myTableView)
+    #  result = case section
+    #    when 0 then 3
+    #    when 1 then 5
+    #    when 2 then 8
+    #    else 0
+    #  end
+    #end
     result
   end
 
+  # Required for TableView datasource protocol
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
-    result = nil
+    result = UITableViewCell.new
 
-    if(tableView == @myTableView)
-      cell = tableView.dequeueReusableCellWithIdentifier(CellID) || begin
-        cell = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:CellID)
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator
-        cell
-      end
 
-      cell.textLabel.text = "Section: #{indexPath.section}, Cell: #{indexPath.row}"
-      return cell 
-    end
-
+    #if(tableView == @myTableView)
+    #  result = tableView.dequeueReusableCellWithIdentifier('CellID')
+    #  if(result == nil)
+    #    result = UITableViewCell.alloc.initWithStyle(UITableViewStyleDefault, reuseIdentifier:TableViewCellIdentifier)
+    #  end
+    result.textLabel.text = "Section: #{indexPath.section}, Cell: #{indexPath.row}"
+    #end
+    result
   end
 end
