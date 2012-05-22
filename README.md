@@ -15,4 +15,4 @@ avoiding it. Wrapping difficult Cocoa libraries with elegant Ruby is a great ide
 examples 1:1 to the cookbook so that the body of the text remains relevant and using an external resource defeats
 that purpose.
 
-[Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/rubymotion_cookbook)
+[Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
