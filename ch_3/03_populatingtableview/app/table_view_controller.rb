@@ -1,33 +1,28 @@
 class TableViewController < UITableViewController
   def viewDidLoad
+    super
+
     view.backgroundColor = UIColor.whiteColor
     @myTableView = UITableView.alloc.initWithFrame(view.bounds, style:UITableViewStylePlain)
-    @myTableView.delegate = self
     @myTableView.dataSource = self
-    @myTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth || UIViewAutoresizingFlexibleHeight
+    @myTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight
 
     view.addSubview(@myTableView)
   end
 
-  def tableView(tableView, heighForRowAtIndexPath:indexPath)
-    result = 20.0
-    result = 40.0 if tableView == @myTableView
-    result
-  end
-
   # Required for TableView datasource protocol
   # Sets the number of sections for the tableView
-  def numberOfRowsInSection(tableView)
-    result = 1
-    if(tableView == @myTableView)
-      result = 3
+  def numberOfSectionsInTableView(tableView)
+    result = 0
+    if (tableView == @myTableView)
+      result = 2
     end
     result
   end
 
-  # Required for TableView datasource protocol
+  # Sets the number of rows in each section
   def tableView(tableView, numberOfRowsInSection:section)
-    result = 1
+    result = 0
     if(tableView == @myTableView)
       result = case section
         when 0 then 3
@@ -39,18 +34,22 @@ class TableViewController < UITableViewController
     result
   end
 
-  # Required for TableView datasource protocol
+  # Modifies each cell
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
-    cell_id = "CellID"
     result = nil
 
     if(tableView == @myTableView)
-      result = tableView.dequeueReusableCellWithIdentifier(cell_id)
+      tableViewCellIdentifier = "MyCells"
+
+      result = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier)
+
       if(result == nil)
-        result = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:cell_id)
+        result = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:tableViewCellIdentifier)
       end
+
       result.textLabel.text = "Section: #{indexPath.section}, Cell: #{indexPath.row}"
     end
     result
   end
+
 end
