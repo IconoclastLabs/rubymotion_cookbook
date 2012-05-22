@@ -1,0 +1,10 @@
+$:.unshift("/Library/RubyMotion/lib")
+require 'motion/project'
+
+Motion::Project::App.setup do |app|
+  # Use `rake config' to see complete project settings.
+  app.name = 'uisplitview'
+  # iPad has to be manually added
+  #app.device_family = [:ipad, :iphone]
+  # or call it like then when testing: rake simulator device_family=ipad
+end
