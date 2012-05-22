@@ -19,38 +19,38 @@ class TableViewController < UITableViewController
   # Sets the number of sections for the tableView
   def numberOfRowsInSection(tableView)
     result = 1
-    #if(tableView == @myTableView)
-    #  result = 3
-    #end
+    if(tableView == @myTableView)
+      result = 3
+    end
     result
   end
 
   # Required for TableView datasource protocol
   def tableView(tableView, numberOfRowsInSection:section)
     result = 1
-    #if(tableView == @myTableView)
-    #  result = case section
-    #    when 0 then 3
-    #    when 1 then 5
-    #    when 2 then 8
-    #    else 0
-    #  end
-    #end
+    if(tableView == @myTableView)
+      result = case section
+        when 0 then 3
+        when 1 then 5
+        when 2 then 8
+        else 0
+      end
+    end
     result
   end
 
   # Required for TableView datasource protocol
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
-    result = UITableViewCell.new
+    cell_id = "CellID"
+    result = nil
 
-
-    #if(tableView == @myTableView)
-    #  result = tableView.dequeueReusableCellWithIdentifier('CellID')
-    #  if(result == nil)
-    #    result = UITableViewCell.alloc.initWithStyle(UITableViewStyleDefault, reuseIdentifier:TableViewCellIdentifier)
-    #  end
-    result.textLabel.text = "Section: #{indexPath.section}, Cell: #{indexPath.row}"
-    #end
+    if(tableView == @myTableView)
+      result = tableView.dequeueReusableCellWithIdentifier(cell_id)
+      if(result == nil)
+        result = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:cell_id)
+      end
+      result.textLabel.text = "Section: #{indexPath.section}, Cell: #{indexPath.row}"
+    end
     result
   end
 end
