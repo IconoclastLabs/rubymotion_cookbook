@@ -1,4 +1,4 @@
-class TableViewController < UITableViewController
+class TableViewController < UIViewController
   def viewDidLoad
     super
 
@@ -15,7 +15,7 @@ class TableViewController < UITableViewController
   def numberOfSectionsInTableView(tableView)
     result = 0
     if (tableView == @myTableView)
-      result = 2
+      result = 3
     end
     result
   end
