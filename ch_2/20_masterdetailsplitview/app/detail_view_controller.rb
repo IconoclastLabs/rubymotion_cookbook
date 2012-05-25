@@ -1,0 +1,3 @@
+class DetailViewController < UIPopoverController
+
+end

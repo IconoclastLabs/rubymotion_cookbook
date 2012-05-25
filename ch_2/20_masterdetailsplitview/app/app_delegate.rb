@@ -9,11 +9,13 @@ class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.makeKeyAndVisible
-    @window.rootViewController = if ipad?
-                                   MyIpadController.alloc.init
-                                 else
-                                   MyIphoneController.alloc.init
-                                 end
+    if ipad?
+      split_view = UISplitViewController.alloc.init
+      nav_controller = UINavigationController.alloc.init 
+      MyIpadController.alloc.init
+    else
+      MyIphoneController.alloc.init
+    end
     true
   end
 end

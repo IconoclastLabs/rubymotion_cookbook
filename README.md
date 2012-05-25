@@ -1,7 +1,7 @@
 # rubymotion_cookbook #
 
 
-RubyMotion iOS Cookbook is our project to learn RubyMotion, iOS development, and to provide a valuable community
+[RubyMotion Cookbook](http://iconoclastlabs.github.com/rubymotion_cookbook) is our project to learn RubyMotion, iOS development, and to provide a valuable community
 resource of code examples. We're experts in none of these things so if you have a suggestion, be gentle, it's
 our first time. This is a work in progress.
 
