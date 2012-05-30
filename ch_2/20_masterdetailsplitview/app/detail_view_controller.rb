@@ -1,4 +1,4 @@
-class DetailViewController < UITableViewController
+class DetailViewController < UIViewController
 
   def viewDidLoad
     view.backgroundColor = UIColor.blueColor
