@@ -7,12 +7,12 @@ end
 
 # following code is mostly a clone from macfanatic on github
 class AppDelegate
-    
+
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     window.makeKeyAndVisible
     true
   end
-  
+
   def window
     @window ||= begin
       w = UIWindow.alloc.initWithFrame UIScreen.mainScreen.bounds
@@ -25,7 +25,7 @@ class AppDelegate
       w
     end
   end
-  
+
   def split_view_controller
     @split_view_controller ||= begin
       s = UISplitViewController.alloc.init
@@ -34,10 +34,10 @@ class AppDelegate
       s
     end
   end
-  
+
   def splitViewController(sc, shouldHideController:c, inOrientation:o)
     p "splitViewController: #{c}, #{o}"
     false
   end
-  
+
 end

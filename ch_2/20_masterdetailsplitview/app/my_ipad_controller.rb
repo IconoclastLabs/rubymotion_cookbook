@@ -7,4 +7,8 @@ class MyIpadController < UIViewController
     @label.frame = [[0,0],[250,150]]
     view.addSubview(@label)
   end
+
+  def shouldAutorotateToInterfaceOrientation(o)
+    true
+  end
 end
