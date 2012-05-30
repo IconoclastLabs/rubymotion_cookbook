@@ -2,20 +2,22 @@ class GroupingOptionsController < UIViewController
   def viewDidLoad
     view.backgroundColor = UIColor.whiteColor
     options = ["iPhone","iPod","iPad","iMac"]
-    @mySegmentedControl = UISegmentedControl.alloc.initWithItems(options)
-    @mySegmentedControl.addTarget(self, action:'segmentChanged', forControlEvents:UIControlEventValueChanged)
-    @mySegmentedControl.center = view.center
-    view.addSubview(@mySegmentedControl)
-
+    @my_segmented_control = UISegmentedControl.alloc.initWithItems(options)
+    @my_segmented_control.center = view.center
+    view.addSubview(@my_segmented_control)
+    @my_segmented_control.addTarget(self, action: :'segment_changed:', forControlEvents:UIControlEventValueChanged)
+    @my_segmented_control.momentary = 'YES'
     @label = UILabel.new
     @label.text = 'Picker Results'
     @label.frame = [[0,0],[250,150]]
     view.addSubview(@label)
   end
 
-  def segmentChanged(sender)
-    @label.text = sender.selectedSegmentIndex
+  def segment_changed(sender)
+    if(sender == @my_segmented_control)
+      index = sender.selectedSegmentIndex
+      segment_text = sender.titleForSegmentAtIndex(index)
+      @label.text = segment_text
+    end
   end
-
-
 end
