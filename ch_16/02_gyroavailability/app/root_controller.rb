@@ -3,25 +3,25 @@ class RootController < UIViewController
     view.backgroundColor = UIColor.lightGrayColor
    
     @label = UILabel.new
-    @label.text = 'Accelerometer'
+    @label.text = 'Gyro'
     @label.frame = [[0,50],[UIScreen.mainScreen.bounds.size.width,50]]
     view.addSubview(@label)
 
     motionManager = CMMotionManager.alloc.init
 
-    if (motionManager.isAccelerometerAvailable)
-      p "Accelerometer is available"
+    if (motionManager.isGyroAvailable)
+      p "Gyro is available"
       @label.text = 'Accelerometer Available'
 
-      if (motionManager.isAccelerometerActive)
-        p "Accelerometer is active"
+      if (motionManager.isGyroActive)
+        p "Gyro is active"
       else
-        p "Accelerometer is not active"
+        p "Gyro is not active"
       end
 
     else
-      p "Accelerometer is not available: You're likely running this in a simulator"
-      @label.text = "Accelerometer Not Available"
+      p "Gyro is not available: You're likely running this in a simulator"
+      @label.text = "Gyro Not Available"
     end
   end
 
