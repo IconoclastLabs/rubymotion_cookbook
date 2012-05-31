@@ -69,7 +69,7 @@ class TableViewController < UIViewController
 
   def tableView(tableView, performAction:action, forRowAtIndexPath:indexPath, withSender:sender)
     # Example implementation of how to do copy, should that have been selected
-    if (NSStringFromSelector(action) == "copy:")
+    if (action == :"copy:")
       cell = tableView.cellForRowAtIndexPath(indexPath)
       paste_board = UIPasteboard.generalPasteboard
       #take current string and put it in paste
