@@ -6,7 +6,7 @@ class RangePickerController < UIViewController
     @mySlider.minimumValue = 0.0
     @mySlider.maximumValue = 100.0
     @mySlider.value = @mySlider.maximumValue / 2.0
-    @mySlider.continuous = :no
+    @mySlider.continuous = false
     @mySlider.setThumbImage(UIImage.imageNamed('ThumbNormal.png'), forState:UIControlStateNormal)
     @mySlider.setThumbImage(UIImage.imageNamed('ThumbHighlighted.png'), forState:UIControlStateHighlighted)
     @mySlider.addTarget(self, action:'sliderValueChanged', forControlEvents:UIControlEventValueChanged)
