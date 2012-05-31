@@ -8,7 +8,8 @@ our first time. This is a work in progress.
 We'll be following along with the actual *[iOS5 Programming Cookbook](http://shop.oreilly.com/product/0636920021728.do)*
  by Vandad Navandipoor from O'Reilly, 
 starting with chapter two, and porting over the Obj-C code examples as we progress through the book. If you have
-the book and want to add or correct the project, send us a pull request, we'll gladly accept the help!
+the book and want to add or correct the project, send us a pull request, we'll gladly accept the help!  Whichever 
+chapter you'd like, because as you can tell, we're not going in strict order either.
 
 Additionally, we're aware that [BubbleWrap](https://github.com/mattetti/BubbleWrap) exists and we're intentionally 
 avoiding it. Wrapping difficult Cocoa libraries with elegant Ruby is a great idea, but we're attempting to map our
