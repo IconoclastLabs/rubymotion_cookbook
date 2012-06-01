@@ -5,8 +5,8 @@ class RootController < UIViewController
 
   def locationManager(manager, didUpdateToLocation:newLocation, fromLocation:oldLocation)
     # got a new location
-    p "Latitude = #{newLocation.coordinate.latitude}"
-    p "Longitude = #{newLocation.coordinate.longitude}"
+    @label.text = "Latitude = #{newLocation.coordinate.latitude} Longitude = #{newLocation.coordinate.longitude}"
+    p @label.text
   end
 
   def locationManager(manager, didFailWithError:error)
@@ -15,6 +15,11 @@ class RootController < UIViewController
 
   def viewDidLoad
     view.backgroundColor = UIColor.lightGrayColor
+    @label = UILabel.new
+    @label.text = 'Gyro'
+    @label.frame = [[0,50],[UIScreen.mainScreen.bounds.size.width,150]]
+    @label.numberOfLines = 0
+    view.addSubview(@label)
     
 
     if (CLLocationManager.locationServicesEnabled)
