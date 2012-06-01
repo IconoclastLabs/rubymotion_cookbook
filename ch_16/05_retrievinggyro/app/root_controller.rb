@@ -15,7 +15,9 @@ class RootController < UIViewController
         @label.text = "Gyro was active, so we passed up listening"
       else
         queue = NSOperationQueue.alloc.init
-        @motionManager.startGyroUpdatesToQueue(queue, withHandler:handle_gyro)
+        @motionManager.startGyroUpdatesToQueue(queue, withHandler:lambda do |gyroData, error|
+          handle_gyro(gyroData, error)                                              
+        end)
       end
     else
       p "Gyro is not available: You're likely running this in a simulator"
