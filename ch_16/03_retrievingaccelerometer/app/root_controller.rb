@@ -12,7 +12,9 @@ class RootController < UIViewController
 
     if (@motionManager.isAccelerometerAvailable)
       queue = NSOperationQueue.alloc.init
-      @motionManager.startAccelerometerUpdatesToQueue(queue, withHandler:handle_motion)
+      @motionManager.startAccelerometerUpdatesToQueue(queue, withHandler:lambda do |accelerometerData, error|
+        handle_motion(accelerometerData, error)
+      end)
     else
       p "Accelerometer is not available: You're likely running this in a simulator"
       @label.text = "Accelerometer Not Available"
