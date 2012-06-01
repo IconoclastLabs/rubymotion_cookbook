@@ -68,9 +68,13 @@ class RootController < UIViewController
     UIView.beginAnimations('changeTableViewContentInset')
     UIView.setAnimationDuration(animation_duration)
     UIView.setAnimationCurve(animation_curve)
+    @window = Pointer.new(:object)
+    @window = UIApplication.sharedApplication.delegate.window #had to add an attribute accessor to AppDelegate to get this
 
-    window = UIApplication.sharedApplication.delegate.window
+    intersectionOfKeyboardRectAndWindowRect = CGRectIntersection(@window.frame, kb_end_rect_obj)
+    bottomInset = intersectionOfKeyboardRectAndWindowRect.size.height
 
+    @my_table_view.contentInset = UIEdgeInsetsMake(0,0,bottomInset,0)
   end
 
 
