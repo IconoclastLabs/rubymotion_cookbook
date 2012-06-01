@@ -58,29 +58,41 @@ class RootController < UIViewController
   end
 
   def handleKeyboardDidShow(notification)
-    animation_curve_obj =  notification.userInfo['UIKeyboardAnimationCurveUserInfoKey']
-    animation_duration_obj = notification.userInfo['UIKeyboardAnimationDurationUserInfoKey']
+    animation_curve =  notification.userInfo['UIKeyboardAnimationCurveUserInfoKey']
+    animation_duration = notification.userInfo['UIKeyboardAnimationDurationUserInfoKey']
     kb_end_rect_obj = notification.userInfo['UIKeyboardFrameEndUserInfoKey']
 
-    curve_ptr = Pointer.new(:uint)
-    animation_curve_obj.getValue(curve_ptr)
-    duration_ptr = Pointer.new(:double)
-    animation_duration_obj.getValue(duration_ptr)
-    kb_frme_ptr = Pointer.new(CGRect.type)
-    kb_frame_obj.getValue(frame_ptr)
-    p curve_ptr
-    p duration_ptr
-    p kb_frme_ptr
+    kb_frame_ptr = Pointer.new(CGRect.type)
+    kb_end_rect_obj.getValue(kb_frame_ptr)
 
-    #begin_animations = UIViewController
+    UIView.beginAnimations('changeTableViewContentInset')
+    UIView.setAnimationDuration(animation_duration)
+    UIView.setAnimationCurve(animation_curve)
 
-
+    window = UIApplication.sharedApplication.delegate.window
 
   end
+
 
   def handleKeyboardWillHide(notification)
-    p "will hide"
-  end
+    if(UIEdgeInsetsEqualToEdgeInsets(@my_table_view, UIEdgeInsetsZero))
+      return #table view content inset is intact, no need to reset
+    end
 
+    animation_curve =  notification.userInfo['UIKeyboardAnimationCurveUserInfoKey']
+    animation_duration = notification.userInfo['UIKeyboardAnimationDurationUserInfoKey']
+    kb_end_rect_obj = notification.userInfo['UIKeyboardFrameEndUserInfoKey']
+
+    kb_frame_ptr = Pointer.new(CGRect.type)
+    kb_end_rect_obj.getValue(kb_frame_ptr)
+
+    UIView.beginAnimations('changeTableViewContentInset')
+    UIView.setAnimationDuration(animation_duration)
+    UIView.setAnimationCurve(animation_curve)
+
+    @my_table_view.contentInset = UIEdgeInsetsZero
+
+    UIView.commitAnimations
+  end
 
 end
