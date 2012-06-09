@@ -8,7 +8,7 @@ class RootController < UIViewController
     @label.sizeToFit
     @label.center = view.center
     view.addSubview(@label)
-
+    @rotationAngleInRadians = 0
     @rotation_gesture_recognizer = UIRotationGestureRecognizer.alloc.initWithTarget(self, action:"handle_rotations:")
     view.addGestureRecognizer(@rotation_gesture_recognizer)
   end
@@ -23,10 +23,10 @@ class RootController < UIViewController
       return
     end
 
-    @label.transform = CGAffineTransformMakeRotation(rotationAngleInRadians + sender.rotation)
+    @label.transform = CGAffineTransformMakeRotation(@rotationAngleInRadians + sender.rotation)
 
     if(sender.state == UIGestureRecognizerStateEnded)
-      self.rotationAngleInRadians += sender.rotation
+      @rotationAngleInRadians += sender.rotation
     end
 
   end
