@@ -3,5 +3,5 @@ require 'motion/project'
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = 'handlingtableview'
+  app.name = '3.05 handlingtableview'
 end

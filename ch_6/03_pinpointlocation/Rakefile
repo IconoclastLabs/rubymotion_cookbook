@@ -3,6 +3,6 @@ require 'motion/project'
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = '6.03pinpoint'
+  app.name = '6.03 pinpoint'
   app.frameworks += %w(CoreLocation MapKit)
 end

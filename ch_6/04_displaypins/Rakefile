@@ -3,6 +3,6 @@ require 'motion/project'
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = '6.04displaypins'
+  app.name = '6.04 displaypins'
   app.frameworks += %w(CoreLocation MapKit)
 end
