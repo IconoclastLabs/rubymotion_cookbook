@@ -41,8 +41,7 @@ class RootController < UIViewController
     result = nil
     settings = NSMutableDictionary.alloc.init
 
-    settings.setValue(NSNumber.numberWithInteger(kAudioFormatAppleLossless), forKey:AVFormatIDKey)
-    #settings.setValue(NSNumber.numberWithInteger(1), forKey:AVFormatIDKey)
+    settings.setValue(NSNumber.numberWithInteger(KAudioFormatAppleLossless), forKey:AVFormatIDKey)
     settings.setValue(NSNumber.numberWithFloat(44100.0), forKey:AVSampleRateKey)
     settings.setValue(NSNumber.numberWithInteger(1), forKey:AVNumberOfChannelsKey)
     settings.setValue(NSNumber.numberWithInteger(AVAudioQualityLow), forKey:AVEncoderAudioQualityKey)
@@ -59,17 +58,42 @@ class RootController < UIViewController
   def audioRecorderDidFinishRecording(recorder, successfully:flag)
     if flag
       p "Successfully stopped the audio recording process"
+
+      Dispatch::Queue.concurrent.async do
+        playbackError = Pointer.new(:object)
+        readingError = Pointer.new(:object)
+        fileData = NSData.dataWithContentsOfFile(self.audioRecordingPath, options:NSDataReadingMapped, error:readingError)
+        @audio_player = AVAudioPlayer.alloc.initWithData(fileData, error:playbackError)
+
+        unless @audio_player.nil?
+          @audio_player.delegate = self
+
+          if @audio_player.prepareToPlay && @audio_player.play
+            p "Started playing the recorded audio"
+          else
+            p "Could not play the audio"
+          end
+        else
+          p "failed to create audio player"
+        end
+      end
+    else
+      p "Stopping the audio recording failed"
     end
+
+    # one trick pony
+    @audio_recorder = nil
+    @audio_player = nil
   end
 
   def viewDidUnload
     super
 
-    if @audio_recorder.isRecording
-      @audio_recorder.stop
-    end
+    @audio_recorder.stop if @audio_recorder.recording?
+    @audio_player.stop if @audio_player.playing?
 
     @audio_recorder = nil
+    @audio_player = nil
 
   end
 
