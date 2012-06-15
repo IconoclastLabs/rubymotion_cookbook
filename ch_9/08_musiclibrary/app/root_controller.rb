@@ -1,15 +1,15 @@
 class RootController < UIViewController
   def displayMediaPickerAndPlayItem
-    media_picker = MPMediaPickerController.alloc.initWithMediaTypes(MPMediaTypeAny)
+    media_picker = MPMediaPickerController.alloc.initWithMediaTypes(MPMediaTypeMusic)
 
     unless media_picker.nil?
       p "Successfully instatiated a media picker"
       media_picker.delegate = self
-      media_picker.allowsPickingMultipleItems = false
+      media_picker.allowsPickingMultipleItems = true
 
-      self.navigationController.presentModalViewController(media_picker, animated:true)
+      self.navigationController.presentModalViewController(media_picker, animated:'YES')
     else
-      p "Could not instantiated media picker"
+      p "Could not instantiate media picker"
     end
 
   end
