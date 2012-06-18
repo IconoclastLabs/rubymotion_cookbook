@@ -22,10 +22,12 @@ class RootController < UIViewController
     @music_player = MPMusicPlayerController.alloc.init
     @music_player.beginGeneratingPlaybackNotifications
 
-    NSNotificationCenter.defaultCenter.addObserver(self, 'musicPlayerStateChanged:', name:MPMusicPlayerControllerPlaybackStateDidChangeNotification, object:@music_player)
-    NSNotificationCenter.defaultCenter.addObserver(self, 'nowPlayingItemIsChanged:', name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object:@music_player)
-    NSNotificationCenter.defaultCenter.addObserver(self, 'volumeIsChanged:', name:MPMusicPlayerControllerVolumeDidChangeNotification, object:@music_player)
+    # TODO these are causing it to error out... why?
+    #NSNotificationCenter.defaultCenter.addObserver(self, 'musicPlayerStateChanged:', name:MPMusicPlayerControllerPlaybackStateDidChangeNotification, object:@music_player)
+    #NSNotificationCenter.defaultCenter.addObserver(self, 'nowPlayingItemIsChanged:', name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object:@music_player)
+    #NSNotificationCenter.defaultCenter.addObserver(self, 'volumeIsChanged:', name:MPMusicPlayerControllerVolumeDidChangeNotification, object:@music_player)
     
+
     @music_player.setQueueWithItemCollection(mediaItemCollection)
     @music_player.play
 
@@ -82,7 +84,7 @@ class RootController < UIViewController
 
     # Regular button
     @my_button_play = UIButton.buttonWithType(UIButtonTypeRoundedRect)
-    @my_button_play.frame = [[0,0],[200,37]]
+    @my_button_play.frame = [[view.center.x,50],[200,37]]
     @my_button_play.setTitle("Pick and Play", forState:UIControlStateNormal)
     # events
     @my_button_play.addTarget(self, action:'displayMediaPickerAndPlayItem', forControlEvents:UIControlEventTouchUpInside)
@@ -99,6 +101,7 @@ class RootController < UIViewController
   end
 
   def stopPlayingAudio
+    #TODO: find out why this is not working
     unless @music_player.nil?
       NSNotificationCenter.defaultCenter.removeObserver(self, name:MPMusicPlayerControllerPlaybackStateDidChangeNotification, object:@music_player)
       NSNotificationCenter.defaultCenter.removeObserver(self, name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object:@music_player)
