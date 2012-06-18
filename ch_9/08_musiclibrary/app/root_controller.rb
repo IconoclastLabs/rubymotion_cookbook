@@ -1,17 +1,20 @@
 class RootController < UIViewController
   def displayMediaPickerAndPlayItem
-    media_picker = MPMediaPickerController.alloc.initWithMediaTypes(MPMediaTypeMusic)
-
-    unless media_picker.nil?
-      p "Successfully instatiated a media picker"
-      media_picker.delegate = self
-      media_picker.allowsPickingMultipleItems = true
-
-      self.navigationController.presentModalViewController(media_picker, animated:'YES')
+    if UIDevice.currentDevice.model == "iPhone Simulator"
+      p "This can't run on the simulator as of the time this code was written.  Please test on device."
     else
-      p "Could not instantiate media picker"
-    end
+      media_picker = MPMediaPickerController.alloc.initWithMediaTypes(MPMediaTypeMusic)
 
+      unless media_picker.nil?
+        p "Successfully instatiated a media picker"
+        media_picker.delegate = self
+        media_picker.allowsPickingMultipleItems = true
+
+        self.navigationController.presentModalViewController(media_picker, animated:'YES')
+      else
+        p "Could not instantiate media picker"
+      end
+    end
   end
 
   def mediaPicker(media_picker, didPickMediaItems:mediaItemCollection)
@@ -23,25 +26,25 @@ class RootController < UIViewController
     @music_player.beginGeneratingPlaybackNotifications
 
     # TODO these are causing it to error out... why?
-    #NSNotificationCenter.defaultCenter.addObserver(self, 'musicPlayerStateChanged:', name:MPMusicPlayerControllerPlaybackStateDidChangeNotification, object:@music_player)
-    #NSNotificationCenter.defaultCenter.addObserver(self, 'nowPlayingItemIsChanged:', name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object:@music_player)
-    #NSNotificationCenter.defaultCenter.addObserver(self, 'volumeIsChanged:', name:MPMusicPlayerControllerVolumeDidChangeNotification, object:@music_player)
+    NSNotificationCenter.defaultCenter.addObserver(self, selector:'musicPlayerStateChanged:', name:MPMusicPlayerControllerPlaybackStateDidChangeNotification, object:@music_player)
+    NSNotificationCenter.defaultCenter.addObserver(self, selector:'nowPlayingItemIsChanged:', name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object:@music_player)
+    NSNotificationCenter.defaultCenter.addObserver(self, selector:'volumeIsChanged:', name:MPMusicPlayerControllerVolumeDidChangeNotification, object:@music_player)
     
 
     @music_player.setQueueWithItemCollection(mediaItemCollection)
     @music_player.play
 
-    mediaItemCollection.each do |this_item| 
-      item_url = this_item.valueForProperty(MPMediaItemPropertyAssetURL)
-      item_title = this_item.valueForProperty(MPMediaItemPropertyTitle)
-      item_artist = this_item.valueForProperty(MPMediaItemPropertyArtist)
-      item_artwork = this_item.valueForProperty(MPMediaItemPropertyArtwork)
-
-      p "Item URL = #{item_url}"
-      p "Item Title = #{item_title}"
-      p "Item Artist = #{item_artist}"
-      p "Item Artwork = #{item_artwork}"
-    end   
+    #mediaItemCollection.each do |this_item| 
+    #  item_url = this_item.valueForProperty(MPMediaItemPropertyAssetURL)
+    #  item_title = this_item.valueForProperty(MPMediaItemPropertyTitle)
+    #  item_artist = this_item.valueForProperty(MPMediaItemPropertyArtist)
+    #  item_artwork = this_item.valueForProperty(MPMediaItemPropertyArtwork)
+#
+#      p "Item URL = #{item_url}"
+#      p "Item Title = #{item_title}"
+#      p "Item Artist = #{item_artist}"
+#      p "Item Artwork = #{item_artwork}"
+#    end   
 
     media_picker.dismissModalViewControllerAnimated(true)
   end
@@ -84,7 +87,7 @@ class RootController < UIViewController
 
     # Regular button
     @my_button_play = UIButton.buttonWithType(UIButtonTypeRoundedRect)
-    @my_button_play.frame = [[view.center.x,50],[200,37]]
+    @my_button_play.frame = [[view.center.x - 100,50],[200,37]]
     @my_button_play.setTitle("Pick and Play", forState:UIControlStateNormal)
     # events
     @my_button_play.addTarget(self, action:'displayMediaPickerAndPlayItem', forControlEvents:UIControlEventTouchUpInside)
@@ -102,6 +105,8 @@ class RootController < UIViewController
 
   def stopPlayingAudio
     #TODO: find out why this is not working
+    p "Stop button pressed"
+
     unless @music_player.nil?
       NSNotificationCenter.defaultCenter.removeObserver(self, name:MPMusicPlayerControllerPlaybackStateDidChangeNotification, object:@music_player)
       NSNotificationCenter.defaultCenter.removeObserver(self, name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object:@music_player)
