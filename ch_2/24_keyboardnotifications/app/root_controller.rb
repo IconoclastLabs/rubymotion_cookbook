@@ -13,7 +13,7 @@ class RootController < UIViewController
   end
 
   def viewDidAppear(animated)
-    NSNotificationCenter.defaultCenter.addObserver(self, selector:'handleKeyboardDidShow:', name:UIKeyboardDidShowNotification, object:nil)
+    NSNotificationCenter.defaultCenter.addObserver(self, selector:'handleKeyboardWillShow:', name:UIKeyboardWillShowNotification, object:nil)
     NSNotificationCenter.defaultCenter.addObserver(self, selector:'handleKeyboardWillHide:', name:UIKeyboardWillHideNotification, object:nil)
     
   end
@@ -57,24 +57,39 @@ class RootController < UIViewController
     result
   end
 
-  def handleKeyboardDidShow(notification)
-    animation_curve =  notification.userInfo['UIKeyboardAnimationCurveUserInfoKey']
-    animation_duration = notification.userInfo['UIKeyboardAnimationDurationUserInfoKey']
-    kb_end_rect_obj = notification.userInfo['UIKeyboardFrameEndUserInfoKey']
+  def handleKeyboardWillShow(notification)
+    user_info = notification.userInfo
+    animation_curve =  user_info.valueForKey(UIKeyboardAnimationCurveUserInfoKey)
+    animation_duration = user_info.valueForKey(UIKeyboardAnimationDurationUserInfoKey)
+    keyboardEndRectObject = user_info.valueForKey(UIKeyboardFrameEndUserInfoKey)
 
-    kb_frame_ptr = Pointer.new(CGRect.type)
-    kb_end_rect_obj.getValue(kb_frame_ptr)
+    #animationCurve = Pointer.new(NSInteger.type)  
+    #animationDuration = Pointer.new(:object)
+    keyboardEndRect_ptr = Pointer.new(CGRect.type)
+    keyboardEndRect = CGRectMake(0, 0, 0, 0)
 
-    UIView.beginAnimations('changeTableViewContentInset')
-    UIView.setAnimationDuration(animation_duration)
-    UIView.setAnimationCurve(animation_curve)
+    #animation_curve.getValue(animationCurve)
+    #animation_duration.getValue(animationDuration)
+    keyboardEndRectObject.getValue(keyboardEndRect_ptr)
+
     @window = Pointer.new(:object)
     @window = UIApplication.sharedApplication.delegate.window #had to add an attribute accessor to AppDelegate to get this
 
-    intersectionOfKeyboardRectAndWindowRect = CGRectIntersection(@window.frame, kb_end_rect_obj)
+    keyboardEndRect = view.convertRect(keyboardEndRect, fromView:@window)
+
+    UIView.beginAnimations('changeTableViewContentInset', context:nil)
+    #UIView.setAnimationDuration(animationDuration)
+    #UIView.setAnimationCurve(animationCurve)
+
+    intersectionOfKeyboardRectAndWindowRect = CGRectIntersection(@window.frame, keyboardEndRect)
     bottomInset = intersectionOfKeyboardRectAndWindowRect.size.height
 
-    @my_table_view.contentInset = UIEdgeInsetsMake(0,0,bottomInset,0)
+    @my_table_view.contentInset = UIEdgeInsetsMake(0,0,bottomInset ,0)
+
+    #indexPathOfOwnerCell = nil
+    #numberOfCells = @my_table_view.dataSource.tableView(@my_table_view, numberOfRowsInSection:0)
+
+    UIView.commitAnimations
   end
 
 
