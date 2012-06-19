@@ -81,16 +81,20 @@ class RootController < UIViewController
     cell_count = @my_table_view.dataSource.tableView(@my_table_view, numberOfRowsInSection:0)
 
     cell_count.times do |counter|
+      p counter
       index_path = NSIndexPath.indexPathForRow(counter, inSection:0)
+      p index_path
       cell = @my_table_view.cellForRowAtIndexPath(index_path)
-      #p cell #returns UITableViewCell
+      p cell #returns UITableViewCell
       text_field = cell.accessoryView
-      p text_field
+      p text_field # reeturns UITextField
       # possibly replace with text_field.class == UITextField.class ?
       if(text_field.isKindOfClass(UITextField.class) == false)
+        p "text_field was not a UITextField...keep going"
         next
       end
       if(text_field.isFirstResponder)
+        p "text_field was a text field, note that"
         index_path_owner_cell = index_path
       end
     end
