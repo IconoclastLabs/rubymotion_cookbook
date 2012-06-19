@@ -77,31 +77,27 @@ class RootController < UIViewController
     bottomInset = window_and_kb_intersection_rect.size.height
 
     @my_table_view.contentInset = UIEdgeInsetsMake(0,0,bottomInset ,0)
-    indexPathOfOwnerCell = nil
+    index_path_owner_cell = nil
     cell_count = @my_table_view.dataSource.tableView(@my_table_view, numberOfRowsInSection:0)
 
     cell_count.times do |counter|
-      p counter
       index_path = NSIndexPath.indexPathForRow(counter, inSection:0)
-      p index_path
       cell = @my_table_view.cellForRowAtIndexPath(index_path)
-      p cell #returns UITableViewCell
-      text_field = cell.accessoryView
-      p text_field # reeturns UITextField
-      # possibly replace with text_field.class == UITextField.class ?
-      if(text_field.isKindOfClass(UITextField.class) == false)
-        p "text_field was not a UITextField...keep going"
+
+      # check for nil, since cells might not exist when off the screen
+      text_field = cell.accessoryView unless cell.nil?
+      unless text_field.class == UITextField
+        # text_field was not a UITextField...keep going
         next
       end
-      if(text_field.isFirstResponder)
-        p "text_field was a text field, note that"
+      if text_field.isFirstResponder
         index_path_owner_cell = index_path
       end
     end
 
     UIView.commitAnimations
 
-    if(!index_path_owner_cell.nil?)
+    unless index_path_owner_cell.nil?
       @my_table_view.scrollToRowAtIndexPath(index_path_owner_cell, atScrollPosition:UITableViewScrollPositionMiddle, animated: true)
     end
   end
