@@ -10,9 +10,9 @@ starting with chapter two, and porting over the Obj-C code examples as we progre
 the book and want to add or correct the project, send us a pull request, we'll gladly accept the help!  Whichever 
 chapter you'd like, because as you can tell, we're not going in strict order either.
 
-Additionally, we're aware that [BubbleWrap](https://github.com/mattetti/BubbleWrap) exists and we're intentionally 
-avoiding it. Wrapping difficult Cocoa libraries with elegant Ruby is a great idea, but we're attempting to map our
-examples 1:1 to the cookbook so that the body of the text remains relevant and using an external resource defeats
-that purpose.
+Additionally, we're aware that [BubbleWrap](https://github.com/mattetti/BubbleWrap) and similar projects exist and 
+we're intentionally avoiding them. Wrapping difficult Cocoa libraries with elegant Ruby is a great idea, but we're
+attempting to map our examples 1:1 to the cookbook so that the body of the text remains relevant and using an 
+external resource defeats that purpose.
 
 [Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
