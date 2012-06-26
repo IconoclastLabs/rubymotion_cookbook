@@ -1,0 +1,3 @@
+This is configured to be easily deployed to Heroku so you have a public URL available for the tests.
+
+For the time being, I've got it hosted at http://falling-samurai-1192.herokuapp.com/
