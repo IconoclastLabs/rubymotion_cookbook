@@ -10,7 +10,7 @@ class RootController < UIViewController
     view.addSubview(@label)
 
     perform_save
-    reading_saves
+    #reading_saves
 
   end
 
