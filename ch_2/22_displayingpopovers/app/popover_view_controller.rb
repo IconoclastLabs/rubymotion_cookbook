@@ -9,7 +9,9 @@ class PopoverController < UIViewController
 
   def gotoAppleWebsite paramSender
     if self.isInPopover
-      self.popoverController.dismissPopoverAnimated(true)
+      p "Photo clicked"
+      # how to hide the popover
+      #$popoverController.dismissPopoverAnimated(true)
     else
       p "iphone"
     end
@@ -17,10 +19,11 @@ class PopoverController < UIViewController
 
   def gotoAppleStoreWebsite paramSender
     if self.isInPopover
-      self.popoverController.dismissPopoverAnimated(true)
+      p "Audio clicked"
     else
       p "iphone"
     end
+
   end
 
   def viewDidLoad
@@ -49,7 +52,7 @@ class PopoverController < UIViewController
     @buttonAudio = nil
   end
 
-  def shouldAutorotateToInterfaceOrientation
+  def shouldAutorotateToInterfaceOrientation(interfaceOrientation)
     true
   end
 

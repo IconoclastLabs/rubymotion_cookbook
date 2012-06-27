@@ -19,7 +19,7 @@ class RootController < UIViewController
 
   def performAddWithPopover(paramSender)
     p "Performing popover"
-    #@popoverController.presentPopoverFromBarButtonItem(@barButtonAdd, permittedArrowDirections:UIPopoverArrowDirectionAny, animated:true)
+    $popoverController.presentPopoverFromBarButtonItem(@barButtonAdd, permittedArrowDirections:UIPopoverArrowDirectionAny, animated:true)
   end
 
   def viewDidLoad
@@ -34,8 +34,8 @@ class RootController < UIViewController
     unless popoverClass.nil? || UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad
       p "Should be able to handle popovers"
       view.backgroundColor = UIColor.lightGrayColor
-      #content = PopoverController.alloc.init
-      #@popoverController = UIPopoverController.alloc.initWithContentViewController(content)
+      content = PopoverController.alloc.init
+      $popoverController = UIPopoverController.alloc.initWithContentViewController(content)
       @barButtonAdd = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action:'performAddWithPopover:')
     else
       p "Popovers are not supported"
