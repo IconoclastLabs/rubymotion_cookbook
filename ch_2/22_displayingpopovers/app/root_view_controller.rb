@@ -13,11 +13,12 @@ class RootController < UIViewController
   end
 
   def performAddWithAlertView(paramSender)
+    p "Performing alert view"
     UIAlertView.alloc.initWithTitle(nil, message:"Add...", delegate:self, cancelButtonTitle:"Cancel", otherButtonTitles:@photoButtonTitle, @audioButtonTitle,nil).show
   end
 
   def performAddWithPopover(paramSender)
-    UIAlertView.alloc.initWithTitle(nil, message:"Add...", delegate:self, cancelButtonTitle:"Cancel", otherButtonTitles:@photoButtonTitle, @audioButtonTitle,nil).show
+    p "Performing popover"
     #@popoverController.presentPopoverFromBarButtonItem(@barButtonAdd, permittedArrowDirections:UIPopoverArrowDirectionAny, animated:true)
   end
 
@@ -32,6 +33,7 @@ class RootController < UIViewController
     # not supported and on ipad?
     unless popoverClass.nil? || UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad
       p "Should be able to handle popovers"
+      view.backgroundColor = UIColor.lightGrayColor
       #content = PopoverController.alloc.init
       #@popoverController = UIPopoverController.alloc.initWithContentViewController(content)
       @barButtonAdd = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action:'performAddWithPopover:')
