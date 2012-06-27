@@ -24,14 +24,13 @@ class Manager < NSManagedObject
       relationship.indexed = false
       relationship.ordered = true
       relationship.minCount = 0
-      relationship.maxCount = 2000 #NSIntegerMax should be here
+      relationship.maxCount = 200 #NSIntegerMax should be here
       relationship.deleteRule = NSCascadeDeleteRule # NSNoActionDeleteRule NSNullifyDeleteRule NSCascadeDeleteRule NSDenyDeleteRule
 
       relationship.destinationEntity = Employee.entity
       relationship.inverseRelationship = relationship.destinationEntity.relationshipsByName['manager']
 
       entity.properties = properties + [relationship]
-
       entity
     end
   end 

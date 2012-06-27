@@ -45,7 +45,7 @@ class RootController < UIViewController
 
     @table_view_persons = UITableView.alloc.initWithFrame(view.bounds, style:UITableViewStylePlain)
     @table_view_persons.delegate = self
-    #@table_view_persons.dataSource = self
+    @table_view_persons.dataSource = self
     view.addSubview(@table_view_persons)
 
     @barButtonAddPerson = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action:'addNewPerson:')
