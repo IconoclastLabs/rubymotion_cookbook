@@ -13,7 +13,7 @@ end
 # Chapter 8.6
 post '/post' do
   response = "POSTed to the server with params:"
-  params.each{|param| response += "#{param} "}
+  params.POST.each{|param| response += "#{param} "}
   response
 end
 # Chapter 8.8
