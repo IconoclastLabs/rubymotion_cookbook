@@ -1,3 +1,4 @@
 This is configured to be easily deployed to Heroku so you have a public URL available for the tests.
 
-For the time being, I've got it hosted at http://falling-samurai-1192.herokuapp.com/
+For the time being, I've got it hosted at http://rubymotion-cookbook.herokuapp.com/
+although it should be trivial to clone this Sinatra app to another instance if needed.

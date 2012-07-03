@@ -1,4 +1,6 @@
 source 'http://rubygems.org'
+#if this is causing you problems,
+#gem install bundler --pre 
 ruby '1.9.3'
 
 gem 'sinatra'
