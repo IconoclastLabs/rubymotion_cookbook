@@ -1,14 +1,16 @@
 class Employee < NSManagedObject
 
   def self.entity
+    p @entity
     @entity ||= begin
+      p "creating employee entity"
       # Create the entity for our Employee class. The entity has 3 properties. CoreData will appropriately define accessor methods for the properties.
       entity = NSEntityDescription.alloc.init
       entity.name = 'Employee'
       entity.managedObjectClassName = 'Employee'
       properties =
-        ['firstName', NSStringAttributeType,
-         'lastName', NSStringAttributeType,
+        ['first_name', NSStringAttributeType,
+         'last_name', NSStringAttributeType,
          'age', NSInteger16AttributeType].each_slice(2).map do |name, type|
             property = NSAttributeDescription.alloc.init
             property.name = name
