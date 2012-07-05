@@ -9,13 +9,15 @@ class RootController < UIViewController
     @label.frame = [[0,50],[UIScreen.mainScreen.bounds.size.width,50]]
     view.addSubview(@label)
 
+    initialize_save
+    perform_save
+    # proof of second save
     perform_save
 
   end
 
-  def perform_save
-
-    @label.text = 'Attempting a data save'
+  def initialize_save
+    @label.text = 'Preparing to save data'
 
     # INITIALIZE CoreData Stuffs
     p "Starting up core data stuff"
@@ -31,6 +33,9 @@ class RootController < UIViewController
 
     @context = NSManagedObjectContext.alloc.init
     @context.persistentStoreCoordinator = store
+  end
+
+  def perform_save
 
     #Save a person in persistent storage
     p "Actually getting to the point to store stuff"
