@@ -82,11 +82,11 @@ class RootController < UIViewController
   end
 
   def shoots_videos?
-    cameraSupportsMedia kUTTypeMovie, UIImagePickerControllerSourceTypeCamera
+    cameraSupportsMedia KUTTypeMovie, UIImagePickerControllerSourceTypeCamera
   end
 
   def takes_photos?
-    cameraSupportsMedia kUTTypeImage, UIImagePickerControllerSourceTypeCamera
+    cameraSupportsMedia KUTTypeImage, UIImagePickerControllerSourceTypeCamera
   end
 
   def has_front_camera?
