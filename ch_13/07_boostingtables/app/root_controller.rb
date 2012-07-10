@@ -1,9 +1,5 @@
 class RootController < UIViewController
   
-  def managedObjectContext
-    @context
-  end
-
   def controllerDidChangeContent controller
     @table_view_persons.reloadData
   end
@@ -32,24 +28,22 @@ class RootController < UIViewController
       raise "Can't use persistent SQLite store: #{error_ptr[0].description}"
     end
 
-    @context = NSManagedObjectContext.alloc.init
-    @context.persistentStoreCoordinator = store
+    $context = NSManagedObjectContext.alloc.init
+    $context.persistentStoreCoordinator = store
 
     # TEST let's make sure the fetch request works
     requestError = Pointer.new(:object)
-    people = @context.executeFetchRequest(fetchRequest, error:requestError)
+    people = $context.executeFetchRequest(fetchRequest, error:requestError)
     p "values can be read" if people.count > 0
     #
     p "FRC gets initialized"
-    @persons_FRC = NSFetchedResultsController.alloc.initWithFetchRequest(fetchRequest, managedObjectContext:@context, sectionNameKeyPath:nil, cacheName:nil)
-    @persons_FRC.delegate = self
-    #reading_saves
+    $persons_FRC = NSFetchedResultsController.alloc.initWithFetchRequest(fetchRequest, managedObjectContext:$context, sectionNameKeyPath:nil, cacheName:nil)
+    $persons_FRC.delegate = self
   end
 
   def addNewPerson paramSender
     controller = AddPersonViewController.alloc.init
     self.navigationController.pushViewController(controller, animated:true)  
-
   end
 
   def viewDidLoad
@@ -80,7 +74,7 @@ class RootController < UIViewController
 
     ## 13.07
     requestError = Pointer.new(:object)
-    if @persons_FRC.performFetch(requestError)
+    if $persons_FRC.performFetch(requestError)
       p "Successful Fetch"
     else
       p "Failed to fetch: #{requestError[0].description}"
@@ -94,7 +88,7 @@ class RootController < UIViewController
 
   def tableView(tableView, numberOfRowsInSection:section)
     p "Get number of rows in section"
-    sectionInfo = @persons_FRC.sections.objectAtIndex(section)
+    sectionInfo = $persons_FRC.sections.objectAtIndex(section)
     sectionInfo.numberOfObjects
   end
 
@@ -110,7 +104,7 @@ class RootController < UIViewController
     end
 
     p "Tryiing to access FRC"
-    person = @persons_FRC.objectAtIndexPath(indexPath)
+    person = $persons_FRC.objectAtIndexPath(indexPath)
 
     unless person.nil?
       result.textLabel.text = person.firstName.stringByAppendingFormat(" ", person.lastName)
@@ -123,10 +117,10 @@ class RootController < UIViewController
   end
 
   def tableView(tableView, commitEditingStyle:editingStyle, forRowAtIndexPath:indexPath)
-    personToDelete = @persons_FRC.objectAtIndexPath(indexPath)
+    personToDelete = $persons_FRC.objectAtIndexPath(indexPath)
     
     #important: Make sure not to reload table while deleting
-    @persons_FRC.delegate = nil
+    $persons_FRC.delegate = nil
 
     self.managedObjectContext.deleteObject(personToDelete)
 
@@ -135,7 +129,7 @@ class RootController < UIViewController
 
       if self.managedObjectContext.save(savingError)
         fetchingError = Pointer.new(:object)
-        if @persons_FRC.performFetch(fetchingError)
+        if $persons_FRC.performFetch(fetchingError)
           p "Successfully fetched"
           rowsToDelete = NSArray.alloc.initWithObjects(indexPath, nil)
           
@@ -148,7 +142,7 @@ class RootController < UIViewController
     end
 
     # annnnnd we're back.
-    @persons_FRC.delegate = self;
+    $persons_FRC.delegate = self;
   end
 
   def tableView(tableView, editingStyleForRowAtIndexPath:indexPath)
