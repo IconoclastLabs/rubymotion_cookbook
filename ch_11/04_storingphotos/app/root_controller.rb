@@ -31,14 +31,9 @@ class RootController < UIViewController
     end
   end
 
-  def imageWasSavedSuccessfully(paramImage, didFinishSavingWithError:paramError, contextInfo:paramContextInfo)
-    if paramError.nil?
-      @label.text = "Image save successfully"
-      p @label.text
-    else
-      @label.text = "Error: #{paramError[0].description}"
-      p @label.text
-    end
+  def imageWasSavedSuccessfully
+    @label.text = "Image save successfully"
+    p @label.text
   end
 
   # UIImagePickerController Delegate Methods
@@ -58,7 +53,7 @@ class RootController < UIViewController
 
       unless video_data.nil?
         @label.text = "Successfully loaded the data"
-        p @lable.text
+        p @label.text
       else
         @label.text = "Failed to load the data with error = #{data_reading_error[0].description}"
         p @label.text
@@ -71,7 +66,7 @@ class RootController < UIViewController
       p "Image Metadata = #{metadata}"
       p @label.text 
 
-      UIImageWriteToSavedPhotosAlbum(the_image, self, 'imageWasSavedSuccessfully:didFinishSavingWithError:contextInfo:', nill)
+      UIImageWriteToSavedPhotosAlbum(the_image, self, 'imageWasSavedSuccessfully', nil)
 
     end
 
