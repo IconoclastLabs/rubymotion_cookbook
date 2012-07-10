@@ -1,8 +1,7 @@
 require 'sinatra'
 
-
 get '/' do
-  "This is an endpoint for the Rubymotion Cookbook to demonstrate network requests."
+  "This is an endpoint for Chapter 8 of the <a href='http://iconoclastlabs.github.com/rubymotion_cookbook/'>Rubymotion Cookbook</a> to demonstrate network requests."
 end
 # Chapter 8.5
 get '/get' do
@@ -13,7 +12,7 @@ end
 # Chapter 8.6
 post '/post' do
   response = "POSTed to the server with params:"
-  params.POST.each{|param| response += "#{param} "}
+  params.each{|param| response += "#{param} "}
   response
 end
 # Chapter 8.8
@@ -28,5 +27,3 @@ delete '/delete' do
   params.each{|param| response += "#{param} "}
   response
 end
-
-
