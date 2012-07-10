@@ -37,17 +37,17 @@ private
     # Create the model programmatically. The data will be stored in a SQLite database, inside the application's Documents folder.
     model = NSManagedObjectModel.alloc.init
     p model
-    #model.entities = [Manager.entity, Employee.entity]
-    #p model.entities
-    #model.entities.each do |entity| 
-    #  p entity 
-    #  entities = entity.managedObjectModel.entitiesByName
-    # 
-    #  entity.relationshipsByName.values.flatten.each do |property|
-    #    property.destinationEntity = entities[property.destinationEntityName]
-    #    property.inverseRelationship = property.destinationEntity.relationshipsByName[property.inverseRelationshipName]
-    #  end
-    #end
+    model.entities = [Manager.entity, Employee.entity]
+    p model.entities
+    model.entities.each do |entity| 
+      p entity 
+      entities = entity.managedObjectModel.entitiesByName
+     
+      entity.relationshipsByName.values.flatten.each do |property|
+        property.destinationEntity = entities[property.destinationEntityName]
+        property.inverseRelationship = property.destinationEntity.relationshipsByName[property.inverseRelationshipName]
+      end
+    end
 
     store = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(model)
     store_url = NSURL.fileURLWithPath(File.join(NSHomeDirectory(), 'Company', DB))
