@@ -3,13 +3,13 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.rootViewController = RootController.new
 
-    url_string = "http://rubymotion-cookbook.herokuapp.com/post"
+    url_string = "http://rubymotion-cookbook.herokuapp.com/put"
     post_body = "bodyParam1=BodyValue1&bodyParam2=BodyValue2"
 
     url = NSURL.URLWithString(url_string)
     request = NSMutableURLRequest.requestWithURL(url)
     request.setTimeoutInterval(30)
-    request.setHTTPMethod("POST")
+    request.setHTTPMethod("PUT")
     request.setHTTPBody(post_body.to_s.dataUsingEncoding(NSUTF8StringEncoding))
     queue = NSOperationQueue.alloc.init
 
@@ -32,3 +32,4 @@ class AppDelegate
     true
   end
 end
+

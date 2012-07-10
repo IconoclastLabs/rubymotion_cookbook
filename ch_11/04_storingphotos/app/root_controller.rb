@@ -20,6 +20,10 @@ class RootController < UIViewController
       controller.allowsEditing = true
       controller.delegate = self
 
+      # additional options
+      #controller.videoQuality = UIImagePickerControllerQualityTypeHigh
+      #controller.videoMaximumDuration = 30.0
+
       self.navigationController.presentModalViewController(controller, animated:true)
     else
       @label.text = "Camera not Available - Probably run in a simulator"
@@ -27,15 +31,33 @@ class RootController < UIViewController
     end
   end
 
+  def imageWasSavedSuccessfully
+    @label.text = "Image save successfully"
+    p @label.text
+  end
+
   # UIImagePickerController Delegate Methods
   def imagePickerController(picker, didFinishPickingMediaWithInfo:info)
     p "Picker returned successfully"
+    p info
+
     mediaType = info.objectForKey(UIImagePickerControllerMediaType)
 
     if mediaType.isEqualToString(KUTTypeMovie)
       video_url = info.objectForKey(UIImagePickerControllerMediaURL)
       @label.text = "Video located at #{video_url}"
       p @label.text
+
+      data_reading_error = Pointer.new(:object)
+      video_data = NSData.dataWithContentsOfURL(video_url, options:NSDataReadingMapped, error:data_reading_error)
+
+      unless video_data.nil?
+        @label.text = "Successfully loaded the data"
+        p @label.text
+      else
+        @label.text = "Failed to load the data with error = #{data_reading_error[0].description}"
+        p @label.text
+      end
     elsif mediaType.isEqualToString(KUTTypeImage)
       metadata = info.objectForKey(UIImagePickerControllerMediaMetadata)
       the_image = info.objectForKey(UIImagePickerControllerOriginalImage)
@@ -43,6 +65,9 @@ class RootController < UIViewController
       @label.text = "Image = #{the_image}"
       p "Image Metadata = #{metadata}"
       p @label.text 
+
+      UIImageWriteToSavedPhotosAlbum(the_image, self, 'imageWasSavedSuccessfully', nil)
+
     end
 
     picker.dismissModalViewControllerAnimated(true)

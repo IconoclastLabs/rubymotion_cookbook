@@ -15,10 +15,14 @@ class RootController < UIViewController
       controller = UIImagePickerController.alloc.init
       controller.sourceType = UIImagePickerControllerSourceTypeCamera
 
-      requiredMediaType = KUTTypeImage
+      requiredMediaType = KUTTypeMovie
       controller.mediaTypes = [requiredMediaType]
       controller.allowsEditing = true
       controller.delegate = self
+
+      # additional options
+      controller.videoQuality = UIImagePickerControllerQualityTypeHigh
+      controller.videoMaximumDuration = 30.0
 
       self.navigationController.presentModalViewController(controller, animated:true)
     else
@@ -30,12 +34,25 @@ class RootController < UIViewController
   # UIImagePickerController Delegate Methods
   def imagePickerController(picker, didFinishPickingMediaWithInfo:info)
     p "Picker returned successfully"
+    p info
+
     mediaType = info.objectForKey(UIImagePickerControllerMediaType)
 
     if mediaType.isEqualToString(KUTTypeMovie)
       video_url = info.objectForKey(UIImagePickerControllerMediaURL)
       @label.text = "Video located at #{video_url}"
       p @label.text
+
+      data_reading_error = Pointer.new(:object)
+      video_data = NSData.dataWithContentsOfURL(video_url, options:NSDataReadingMapped, error:data_reading_error)
+
+      unless video_data.nil?
+        @label.text = "Successfully loaded the data"
+        p @label.text
+      else
+        @label.text = "Failed to load the data with error = #{data_reading_error[0].description}"
+        p @label.text
+      end
     elsif mediaType.isEqualToString(KUTTypeImage)
       metadata = info.objectForKey(UIImagePickerControllerMediaMetadata)
       the_image = info.objectForKey(UIImagePickerControllerOriginalImage)
