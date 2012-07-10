@@ -15,8 +15,8 @@ class RootController < UIViewController
       controller = UIImagePickerController.alloc.init
       controller.sourceType = UIImagePickerControllerSourceTypeCamera
 
-      requiredMediaType = kUTTypeImage
-      controller.mediaTypes = [requiredMediaType, nil]
+      requiredMediaType = KUTTypeImage
+      controller.mediaTypes = [requiredMediaType]
       controller.allowsEditing = true
       controller.delegate = self
 
@@ -32,11 +32,11 @@ class RootController < UIViewController
     p "Picker returned successfully"
     mediaType = info.objectForKey(UIImagePickerControllerMediaType)
 
-    if mediaType.isEqualToString(kUTTypeMovie)
+    if mediaType.isEqualToString(KUTTypeMovie)
       video_url = info.objectForKey(UIImagePickerControllerMediaURL)
       @label.text = "Video located at #{video_url}"
       p @label.text
-    elsif mediaType.isEqualToString(kUTTypeImage)
+    elsif mediaType.isEqualToString(KUTTypeImage)
       metadata = info.objectForKey(UIImagePickerControllerMediaMetadata)
       the_image = info.objectForKey(UIImagePickerControllerOriginalImage)
 
