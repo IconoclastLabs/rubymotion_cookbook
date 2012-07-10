@@ -58,7 +58,8 @@ class RootController < UIViewController
     view.addSubview(@table_view_persons)
 
     @barButtonAddPerson = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action:'addNewPerson:')
-    self.navigationItem.setLeftBarButtonItem(self.editButtonItem, animated:false)
+    # Not sure what this was for
+    #self.navigationItem.setLeftBarButtonItem(self.editButtonItem, animated:false)
     self.navigationItem.setRightBarButtonItem(@barButtonAddPerson, animated:false) 
 
     reading_saves
@@ -117,27 +118,28 @@ class RootController < UIViewController
   end
 
   def tableView(tableView, commitEditingStyle:editingStyle, forRowAtIndexPath:indexPath)
+    p "Preparing to delete"
     personToDelete = $persons_FRC.objectAtIndexPath(indexPath)
     
     #important: Make sure not to reload table while deleting
     $persons_FRC.delegate = nil
 
-    self.managedObjectContext.deleteObject(personToDelete)
+    $context.deleteObject(personToDelete)
 
     if (personToDelete.isDeleted)
       savingError = Pointer.new(:object)
 
-      if self.managedObjectContext.save(savingError)
+      if $context.save(savingError)
         fetchingError = Pointer.new(:object)
+        p "Successfully Deleted Person"
         if $persons_FRC.performFetch(fetchingError)
-          p "Successfully fetched"
-          rowsToDelete = NSArray.alloc.initWithObjects(indexPath, nil)
+          p "Successfully Deleted Person"
+          rowsToDelete = [indexPath]
           
           @table_view_persons.deleteRowsAtIndexPaths(rowsToDelete, withRowAnimation:UITableViewRowAnimationAutomatic)
         else
           p "Failed to fetch with error #{fetchingError[0].description}"
         end
-        p "Failed to save the context with error #{savingError[0].description}"
       end
     end
 
@@ -153,8 +155,10 @@ class RootController < UIViewController
     super.setEditing(paramEditing, animated:paramAnimated)
 
     if paramEditing
+      p "Editing!"
       self.navigationItem.setRightBarButtonItem(nil, animated:true)
     else
+      p "Not Editing"
       self.navigationItem.setRightBarButtonItem(@barButtonAddPerson, animated:true)
     end
 
