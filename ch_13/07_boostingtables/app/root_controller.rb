@@ -5,7 +5,7 @@ class RootController < UIViewController
   end
 
   def controllerDidChangeContent controller
-    #@table_view_persons.reloadData
+    @table_view_persons.reloadData
   end
 
   def init
@@ -20,8 +20,27 @@ class RootController < UIViewController
 
     fetchRequest.sortDescriptors = sortDescriptors
     fetchRequest.setEntity(Person.entity)
-    p "FRC gets initialized"
+    # INITIALIZE CoreData Stuffs
+    p "Starting up core data stuff"
+    model = NSManagedObjectModel.alloc.init
+    model.entities = [Person.entity]
+
+    store = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(model)
+    store_url = NSURL.fileURLWithPath(File.join(NSHomeDirectory(), 'Documents', 'Locations.sqlite'))
+    error_ptr = Pointer.new(:object)
+    unless store.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:store_url, options:nil, error:error_ptr)
+      raise "Can't use persistent SQLite store: #{error_ptr[0].description}"
+    end
+
     @context = NSManagedObjectContext.alloc.init
+    @context.persistentStoreCoordinator = store
+
+    # TEST let's make sure the fetch request works
+    requestError = Pointer.new(:object)
+    people = @context.executeFetchRequest(fetchRequest, error:requestError)
+    p "values can be read" if people.count > 0
+    #
+    p "FRC gets initialized"
     @persons_FRC = NSFetchedResultsController.alloc.initWithFetchRequest(fetchRequest, managedObjectContext:@context, sectionNameKeyPath:nil, cacheName:nil)
     @persons_FRC.delegate = self
     #reading_saves
@@ -41,19 +60,19 @@ class RootController < UIViewController
     @table_view_persons = UITableView.alloc.initWithFrame(view.bounds, style:UITableViewStylePlain)
     @table_view_persons.delegate = self
     @table_view_persons.dataSource = self
-    #view.addSubview(@table_view_persons)
+    view.addSubview(@table_view_persons)
 
     @barButtonAddPerson = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action:'addNewPerson:')
     self.navigationItem.setLeftBarButtonItem(self.editButtonItem, animated:false)
     self.navigationItem.setRightBarButtonItem(@barButtonAddPerson, animated:false) 
 
-    #reading_saves
+    reading_saves
   end
 
   def viewDidUnload
     super
-    #@barButtonAddPerson = nil
-    #@table_view_persons = nil
+    @barButtonAddPerson = nil
+    @table_view_persons = nil
   end
 
   def reading_saves
@@ -63,7 +82,7 @@ class RootController < UIViewController
     if @persons_FRC.performFetch(requestError)
       p "Successful Fetch"
     else
-      p "Failed to fetch"
+      p "Failed to fetch: #{requestError[0].description}"
     end
     ## 
   end
@@ -73,12 +92,13 @@ class RootController < UIViewController
   end
 
   def tableView(tableView, numberOfRowsInSection:section)
+    p "Get number of rows in section"
     sectionInfo = @persons_FRC.sections.objectAtIndex(section)
     sectionInfo.numberOfObjects
-    
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
+    p "cell for row at index path"
     result = nil
     personTableViewCell = "PersonTableViewCell"
     result = tableView.dequeueReusableCellWithIdentifier(personTableViewCell)
@@ -91,8 +111,12 @@ class RootController < UIViewController
     p "Tryiing to access FRC"
     person = @persons_FRC.objectAtIndexPath(indexPath)
 
-    result.textLabel.text = person.firstName.stringByAppendingFormat(" ", person.lastName)
-    result.detailTextLabel.text = "Age #{person.age}"
+    unless person.nil?
+      result.textLabel.text = person.firstName.stringByAppendingFormat(" ", person.lastName)
+      result.detailTextLabel.text = "Age #{person.age}"
+    else
+      p "persons_FRC came back with nil"
+    end
 
     result
   end
