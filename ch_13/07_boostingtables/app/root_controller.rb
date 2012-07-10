@@ -1,16 +1,11 @@
 class RootController < UIViewController
-  attr_accessor :delegate
   
   def managedObjectContext
-    #appDelegate = UIApplication.sharedApplication.delegate
-    #managedObjectContext = appDelegate.managedObjectContext;
-
-    #managedObjectContext
     @context
   end
 
   def controllerDidChangeContent controller
-    @table_view_persons.reloadData
+    #@table_view_persons.reloadData
   end
 
   def init
@@ -29,7 +24,7 @@ class RootController < UIViewController
     @context = NSManagedObjectContext.alloc.init
     @persons_FRC = NSFetchedResultsController.alloc.initWithFetchRequest(fetchRequest, managedObjectContext:@context, sectionNameKeyPath:nil, cacheName:nil)
     @persons_FRC.delegate = self
-    reading_saves
+    #reading_saves
   end
 
   def addNewPerson paramSender
@@ -46,7 +41,7 @@ class RootController < UIViewController
     @table_view_persons = UITableView.alloc.initWithFrame(view.bounds, style:UITableViewStylePlain)
     @table_view_persons.delegate = self
     @table_view_persons.dataSource = self
-    view.addSubview(@table_view_persons)
+    #view.addSubview(@table_view_persons)
 
     @barButtonAddPerson = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd, target:self, action:'addNewPerson:')
     self.navigationItem.setLeftBarButtonItem(self.editButtonItem, animated:false)
@@ -57,8 +52,8 @@ class RootController < UIViewController
 
   def viewDidUnload
     super
-    @barButtonAddPerson = nil
-    @table_view_persons = nil
+    #@barButtonAddPerson = nil
+    #@table_view_persons = nil
   end
 
   def reading_saves
