@@ -10,7 +10,7 @@ class AppDelegate
     request = NSMutableURLRequest.requestWithURL(url)
     request.setTimeoutInterval(30)
     request.setHTTPMethod("POST")
-    request.setHTTPBody(post_body)
+    request.setHTTPBody(post_body.to_s.dataUsingEncoding(NSUTF8StringEncoding))
     queue = NSOperationQueue.alloc.init
 
     NSURLConnection.sendAsynchronousRequest(request,
