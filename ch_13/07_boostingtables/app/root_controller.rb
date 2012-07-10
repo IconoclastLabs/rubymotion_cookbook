@@ -47,7 +47,8 @@ class RootController < UIViewController
   end
 
   def addNewPerson paramSender
-    
+    controller = AddPersonViewController.alloc.init
+    self.navigationController.pushViewController(controller, animated:true)  
 
   end
 
