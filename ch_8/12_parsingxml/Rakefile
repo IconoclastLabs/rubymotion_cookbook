@@ -1,0 +1,22 @@
+# Wow. XML for iOS really sucks.  I'm going to break from the
+# "vanilla" spirit of the Cookbook and implement this with
+# a cocoapod RaptureXML since that's what I'd do if I saw this 
+# in Objective-C (well, I'd really use JSON if I had a choice)
+
+# --SETUP--
+# gem install cocoapods
+# pod setup
+# gem install motion-cocoapods
+
+# -*- coding: utf-8 -*-
+$:.unshift("/Library/RubyMotion/lib")
+require 'motion/project'
+require 'motion-cocoapods'
+
+Motion::Project::App.setup do |app|
+  # Use `rake config' to see complete project settings.
+  app.name = '12_parsingxml'
+  app.pods do 
+    pod 'RaptureXML', '~> 1.0.0'
+  end
+end

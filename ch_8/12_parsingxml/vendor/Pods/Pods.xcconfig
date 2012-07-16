@@ -1,0 +1,4 @@
+PODS_ROOT = ${SRCROOT}/Pods
+ALWAYS_SEARCH_USER_PATHS = YES
+OTHER_LDFLAGS = -ObjC -lxml2 -lz
+HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include/libxml2 "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/RaptureXML"

@@ -1,0 +1,5 @@
+PODS:
+  - RaptureXML (1.0.0)
+
+DEPENDENCIES:
+  - RaptureXML (~> 1.0.0)

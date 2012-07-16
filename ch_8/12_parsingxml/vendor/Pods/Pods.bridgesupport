@@ -1,0 +1,145 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<class name='RXMLElement'>
+<method selector='attribute:'>
+<arg name='attributeName' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='attribute:inNamespace:'>
+<arg name='attributeName' index='0' declared_type='NSString*' type='@'/>
+<arg name='ns' index='1' declared_type='NSString*' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='attributeAsDouble:'>
+<arg name='attributeName' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='double' type='d'/>
+</method>
+<method selector='attributeAsDouble:inNamespace:'>
+<arg name='attributeName' index='0' declared_type='NSString*' type='@'/>
+<arg name='ns' index='1' declared_type='NSString*' type='@'/>
+<retval declared_type='double' type='d'/>
+</method>
+<method selector='attributeAsInt:'>
+<arg name='attributeName' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='NSInteger' type='i'/>
+</method>
+<method selector='attributeAsInt:inNamespace:'>
+<arg name='attributeName' index='0' declared_type='NSString*' type='@'/>
+<arg name='ns' index='1' declared_type='NSString*' type='@'/>
+<retval declared_type='NSInteger' type='i'/>
+</method>
+<method selector='child:'>
+<arg name='tag' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='RXMLElement*' type='@'/>
+</method>
+<method selector='child:inNamespace:'>
+<arg name='tag' index='0' declared_type='NSString*' type='@'/>
+<arg name='ns' index='1' declared_type='NSString*' type='@'/>
+<retval declared_type='RXMLElement*' type='@'/>
+</method>
+<method selector='children:'>
+<arg name='tag' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='children:inNamespace:'>
+<arg name='tag' index='0' declared_type='NSString*' type='@'/>
+<arg name='ns' index='1' declared_type='NSString*' type='@'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='childrenWithRootXPath:'>
+<arg name='xpath' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method class_method='true' selector='elementFromURL:'>
+<arg name='url' index='0' declared_type='NSURL*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='elementFromXMLData:'>
+<arg name='data' index='0' declared_type='NSData*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='elementFromXMLFile:'>
+<arg name='filename' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='elementFromXMLFilename:fileExtension:'>
+<arg name='filename' index='0' declared_type='NSString*' type='@'/>
+<arg name='extension' index='1' declared_type='NSString*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='elementFromXMLNode:'>
+<arg name='node' index='0' declared_type='id' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='elementFromXMLString:encoding:'>
+<arg name='xmlString' index='0' declared_type='NSString*' type='@'/>
+<arg name='encoding' index='1' declared_type='NSStringEncoding' type='I'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initFromURL:'>
+<arg name='url' index='0' declared_type='NSURL*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initFromXMLData:'>
+<arg name='data' index='0' declared_type='NSData*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initFromXMLFile:'>
+<arg name='filename' index='0' declared_type='NSString*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initFromXMLFile:fileExtension:'>
+<arg name='filename' index='0' declared_type='NSString*' type='@'/>
+<arg name='extension' index='1' declared_type='NSString*' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initFromXMLNode:'>
+<arg name='node' index='0' declared_type='id' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initFromXMLString:encoding:'>
+<arg name='xmlString' index='0' declared_type='NSString*' type='@'/>
+<arg name='encoding' index='1' declared_type='NSStringEncoding' type='I'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isValid'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='iterate:usingBlock:'>
+<arg name='query' index='0' declared_type='NSString*' type='@'/>
+<arg name='blk' index='1' declared_type='void (^)(RXMLElement *)' function_pointer='true' type='@?'>
+<arg declared_type='RXMLElement*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='iterateElements:usingBlock:'>
+<arg name='elements' index='0' declared_type='NSArray*' type='@'/>
+<arg name='blk' index='1' declared_type='void (^)(RXMLElement *)' function_pointer='true' type='@?'>
+<arg declared_type='RXMLElement*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='iterateWithRootXPath:usingBlock:'>
+<arg name='xpath' index='0' declared_type='NSString*' type='@'/>
+<arg name='blk' index='1' declared_type='void (^)(RXMLElement *)' function_pointer='true' type='@?'>
+<arg declared_type='RXMLElement*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='tag'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='text'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='textAsDouble'>
+<retval declared_type='double' type='d'/>
+</method>
+<method selector='textAsInt'>
+<retval declared_type='NSInteger' type='i'/>
+</method>
+</class>
+</signatures>
