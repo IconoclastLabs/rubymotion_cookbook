@@ -13,5 +13,7 @@ class RootController < UIViewController
 
   def viewDidLoad
     #enumerate_fonts
+    graphic_view = GraphicsController.alloc.initWithFrame(view.bounds)
+    view.addSubview(graphic_view)
   end
 end
