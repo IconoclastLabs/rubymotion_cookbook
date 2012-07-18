@@ -3,6 +3,6 @@ require 'motion/project'
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = '06 retrievemedia'
+  app.name = '07 retrieveassets'
   app.frameworks += %w(MobileCoreServices AssetsLibrary)
 end
