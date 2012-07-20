@@ -4,7 +4,7 @@ require 'motion/project'
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = '01_retrievingcals'
+  app.name = '02_addingcalevents'
   app.frameworks += %w(EventKit EventKitUI)
 
 end
