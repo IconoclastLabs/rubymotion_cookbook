@@ -1,4 +1,4 @@
-describe "Application 'usingswitches'" do
+describe "Application 'tarot'" do
   before do
     @app = UIApplication.sharedApplication
   end
@@ -6,5 +6,4 @@ describe "Application 'usingswitches'" do
   it "has one window" do
     @app.windows.size.should == 1
   end
-
 end
