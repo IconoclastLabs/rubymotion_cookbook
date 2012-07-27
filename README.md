@@ -4,6 +4,9 @@
 resource of code examples. We're experts in none of these things so if you have a suggestion, be gentle, it's
 our first time. This is a work in progress.
 
+![RubyMotion
+Cookbook](./rubymotion_cookbook/raw/master/rubymotion_cookbook.png
+"RubyMotion Cookbook")
 We'll be following along with the actual *[iOS5 Programming Cookbook](http://shop.oreilly.com/product/0636920021728.do)*
  by Vandad Navandipoor from O'Reilly, 
 starting with chapter two, and porting over the Obj-C code examples as we progress through the book. If you have
@@ -12,7 +15,7 @@ chapter you'd like, because as you can tell, we're not going in strict order eit
 
 Additionally, we're aware that [BubbleWrap](https://github.com/mattetti/BubbleWrap) and similar projects exist and 
 we're intentionally avoiding them. Wrapping difficult Cocoa libraries with elegant Ruby is a great idea, but we're
-attempting to map our examples 1:1 to the cookbook so that the body of the text remains relevant and using an 
+attempting to map our examples 1:1 to the cookbook (with creative license) so that the body of the text remains relevant and using an 
 external resource defeats that purpose.
 
 [Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
