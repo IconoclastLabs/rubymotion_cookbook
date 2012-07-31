@@ -16,10 +16,16 @@ class RootController < UIViewController
       array_of_people = ABAddressBookCopyArrayOfAllPeople(address_book)
 
       array_of_people.each_with_index do |person, index|
+        first_name = Pointer.new(:object)
+        first_name = ABRecordCopyValue(person, KABPersonFirstNameProperty)
+        last_name = Pointer.new(:object)
+        last_name = ABRecordCopyValue(person, KABPersonLastNameProperty)
+        address = Pointer.new(:object)
+        address = ABRecordCopyValue(person, KABPersonEmailProperty)
         p "Person #{index + 1}: Retrieved"
-        p "First Name = #{ABRecordCopyValue(person, KABPersonFirstNameProperty)}"
-        p "Last Name = #{ABRecordCopyValue(person, KABPersonLastNameProperty)}"
-        p "Address = #{ABRecordCopyValue(person, KABPersonEmailProperty)}"
+        p "First Name = #{first_name}"
+        p "Last Name = #{last_name}"
+        p "Address = #{address}"
         p " -- "
       end
 
