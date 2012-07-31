@@ -7,6 +7,7 @@ our first time. This is a work in progress.
 ![RubyMotion
 Cookbook](./rubymotion_cookbook/raw/master/rubymotion_cookbook.png
 "RubyMotion Cookbook")
+
 We'll be following along with the actual *[iOS5 Programming Cookbook](http://shop.oreilly.com/product/0636920021728.do)*
  by Vandad Navandipoor from O'Reilly, 
 starting with chapter two, and porting over the Obj-C code examples as we progress through the book. If you have
@@ -18,4 +19,5 @@ we're intentionally avoiding them. Wrapping difficult Cocoa libraries with elega
 attempting to map our examples 1:1 to the cookbook (with creative license) so that the body of the text remains relevant and using an 
 external resource defeats that purpose.
 
-[Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
+## [Please share our Github page with others](http://iconoclastlabs.github.com/rubymotion_cookbook/)
+## [Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
