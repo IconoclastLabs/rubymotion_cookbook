@@ -20,12 +20,10 @@ class RootController < UIViewController
         first_name = ABRecordCopyValue(person, KABPersonFirstNameProperty)
         last_name = Pointer.new(:object)
         last_name = ABRecordCopyValue(person, KABPersonLastNameProperty)
-        address = Pointer.new(:object)
-        address = ABRecordCopyValue(person, KABPersonEmailProperty)
         p "Person #{index + 1}: Retrieved"
         p "First Name = #{first_name}"
         p "Last Name = #{last_name}"
-        p "Address = #{address}"
+        print_person_emails person
         p " -- "
       end
 
@@ -35,6 +33,29 @@ class RootController < UIViewController
       @label.text = "Could not access address book"
       p @label.text
     end
+  end
+
+  def print_person_emails person
+    if person.nil?
+      p "Given person was nil"
+      return
+    end
+
+    emails = Pointer.new(:object)
+    emails = ABRecordCopyValue(person, KABPersonEmailProperty)
+
+    if emails.nil?
+      p "This contact has no emails"
+      return
+    end
+
+    p "Number of emails = #{ABMultiValueGetCount(emails)}"
+
+    email_array = ABMultiValueCopyArrayOfAllValues(emails) || []
+    email_array.each_with_index do |email, index|
+      email_label = Pointer.new(:object)
+      # do stuffs with the email
+    end   
   end
 
 end
