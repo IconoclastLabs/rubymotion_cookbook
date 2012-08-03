@@ -8,9 +8,9 @@ class AppDelegate
 
     url = NSURL.URLWithString(url_string)
     request = NSMutableURLRequest.requestWithURL(url)
-    request.setTimeoutInterval(30)
-    request.setHTTPMethod("DELETE")
-    request.setHTTPBody(post_body.to_s.dataUsingEncoding(NSUTF8StringEncoding))
+    request.timeoutInterval = 30
+    request.HTTPMethod = "DELETE"
+    request.HTTPBody = post_body.dataUsingEncoding(NSUTF8StringEncoding)
     queue = NSOperationQueue.alloc.init
 
     NSURLConnection.sendAsynchronousRequest(request,
