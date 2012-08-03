@@ -5,8 +5,8 @@ class AppDelegate
 
     url = NSURL.URLWithString("http://www.apple.com")
     request = NSURLRequest.requestWithURL(url,
-                                          cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData,
-                                          timeoutInterval:30)
+                              cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData,
+                          timeoutInterval:30)
     queue = NSOperationQueue.alloc.init
 
     NSURLConnection.sendAsynchronousRequest(request,
@@ -15,11 +15,11 @@ class AppDelegate
         if(data.length > 0 && error.nil?)
           doc_dir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask,
-                                                        'YES').objectAtIndex(0)
+                                                        true).first
           #p doc_dir
           file_path = doc_dir.stringByAppendingPathComponent("apple.html")
 
-          data.writeToFile(file_path, atomically: 'YES')
+          data.writeToFile(file_path, atomically: true)
 
           p "Saved file to #{file_path}"
         elsif( data.length == 0 && error.nil? )
