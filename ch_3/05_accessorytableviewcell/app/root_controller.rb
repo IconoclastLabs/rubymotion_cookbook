@@ -61,6 +61,8 @@ class RootController < UIViewController
       
       #show both types for fun!
       result.accessoryType = ((indexPath.row % 2) == 0) ? UITableViewCellAccessoryDetailDisclosureButton : UITableViewCellAccessoryDisclosureIndicator
+      # throw a checkmark in there every so often!
+      result.accessoryType = UITableViewCellAccessoryCheckmark if indexPath.row == 2 
     end
     result
   end
