@@ -3,6 +3,6 @@ require 'motion/project'
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = '03_retrieve_properties'
+  app.name = '03 retrieve_properties'
   app.frameworks += %w(AddressBook)
 end
