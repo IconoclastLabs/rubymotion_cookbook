@@ -9,8 +9,5 @@ class ThirdNavController < UIViewController
     @label.text = "viewController Count:  #{current_controllers.size}"
     @label.frame = [[50,50],[350,50]]
     view.addSubview(@label)
-
-    #current_controllers.removeLastObject
-
   end
 end
