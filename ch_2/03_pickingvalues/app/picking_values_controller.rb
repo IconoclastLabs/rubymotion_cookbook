@@ -6,12 +6,11 @@ class PickingValuesController < UIViewController
     @myPicker.dataSource = self
     @myPicker.delegate = self
     @myPicker.center = self.view.center
-    @myPicker.center = view.center
 
     self.view.addSubview(@myPicker)
   end
 
-  # Necssary to have these method in order to be a datasource
+  # Necessary to implement these methods in order to be a datasource
   # - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
   def numberOfComponentsInPickerView pickerView
     1 
