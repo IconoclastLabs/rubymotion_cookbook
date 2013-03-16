@@ -1,11 +1,13 @@
 # rubymotion_cookbook #
 
+PLEASE NOTE:  SOME CHAPTERS DO NOT WORK IN iOS 6 - THIS REFERANCE IS GREAT BUT MAY NOT BE PERFECT.  FEEL FREE TO PULL REQUEST
+
 [RubyMotion Cookbook](http://iconoclastlabs.github.com/rubymotion_cookbook) is our project to learn RubyMotion, iOS development, and to provide a valuable community
 resource of code examples. We're experts in none of these things so if you have a suggestion, be gentle, it's
 our first time. This is a work in progress.
 
 ![RubyMotion
-Cookbook](./rubymotion_cookbook/raw/master/rubymotion_cookbook.png
+Cookbook](https://github.com/IconoclastLabs/rubymotion_cookbook/raw/master/rubymotion_cookbook.png
 "RubyMotion Cookbook")
 
 We'll be following along with the actual *[iOS5 Programming Cookbook](http://shop.oreilly.com/product/0636920021728.do)*
