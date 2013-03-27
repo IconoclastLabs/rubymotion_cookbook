@@ -21,7 +21,6 @@ class RootController < UIViewController
   end
 
   def textField(textField, shouldChangeCharactersInRange:range, replacementString:string)
-    result = 'YES'
     if textField.isEqual(@my_text_field)
       # IMPORTANT NOTE:  You can't just use @my_text_field in your function here because this delegate is called
       # BEFORE the value is placed in the UITextField.  Therefore using @my_text_field would always give you
@@ -29,12 +28,12 @@ class RootController < UIViewController
       wholeText = textField.text.stringByReplacingCharactersInRange(range, withString:string)
       self.calculateAndDisplayTextFieldLengthWithText(wholeText)
     end
-    result
+    true
   end
 
   def textFieldShouldReturn textField
     textField.resignFirstResponder
-   'YES'
+    true
   end
 
   def calculateAndDisplayTextFieldLengthWithText(paramText)
