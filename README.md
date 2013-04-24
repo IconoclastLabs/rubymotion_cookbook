@@ -23,3 +23,5 @@ external resource defeats that purpose.
 
 ## [Please share our Github page with others](http://iconoclastlabs.github.com/rubymotion_cookbook/)
 ## [Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
+
+![contact](https://s3.amazonaws.com/iconoclastweb/email_pic.png)
