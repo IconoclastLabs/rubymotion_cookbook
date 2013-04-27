@@ -5,7 +5,7 @@ class RootController < UIViewController
     view.backgroundColor = UIColor.whiteColor
     @my_web_view = UIWebView.alloc.initWithFrame(view.bounds)
     @my_web_view.delegate = self
-    @my_web_view.scalesPageToFit = 'YES'
+    @my_web_view.scalesPageToFit = false
 
     view.addSubview(@my_web_view)
 
@@ -16,14 +16,14 @@ class RootController < UIViewController
   end
 
   def webViewDidStartLoad(webView)
-    UIApplication.sharedApplication.setNetworkActivityIndicatorVisible('YES')
+    UIApplication.sharedApplication.setNetworkActivityIndicatorVisible(true)
   end
 
   def webViewDidFinishLoad(webView)
-    UIApplication.sharedApplication.setNetworkActivityIndicatorVisible('NO')
+    UIApplication.sharedApplication.setNetworkActivityIndicatorVisible(false)
   end
 
   def webView(webView, didFailLoadWithError:error)
-    UIApplication.sharedApplication.setNetworkActivityIndicatorVisible('NO')
+    UIApplication.sharedApplication.setNetworkActivityIndicatorVisible(false)
   end
 end
