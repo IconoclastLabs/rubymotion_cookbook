@@ -6,7 +6,7 @@ class GroupingOptionsController < UIViewController
     @my_segmented_control.center = view.center
     view.addSubview(@my_segmented_control)
     @my_segmented_control.addTarget(self, action: :'segment_changed:', forControlEvents:UIControlEventValueChanged)
-    @my_segmented_control.momentary = 'YES'
+    @my_segmented_control.momentary = true
     @label = UILabel.new
     @label.text = 'Picker Results'
     @label.frame = [[0,0],[250,150]]
