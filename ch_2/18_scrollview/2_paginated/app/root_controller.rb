@@ -10,7 +10,7 @@ class RootController < UIViewController
     scrollViewRect = view.bounds
 
     @my_scroll_view = UIScrollView.alloc.initWithFrame(scrollViewRect)
-    @my_scroll_view.pagingEnabled = 'YES'
+    @my_scroll_view.pagingEnabled = true # equals YES
     @my_scroll_view.contentSize = CGSizeMake(scrollViewRect.size.width * 3.0, scrollViewRect.size.height)
     view.addSubview(@my_scroll_view)
 
