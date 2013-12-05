@@ -1,6 +1,8 @@
 # rubymotion_cookbook #
 
-PLEASE NOTE:  SOME CHAPTERS DO NOT WORK IN iOS 6 - THIS REFERANCE IS GREAT BUT MAY NOT BE PERFECT.  FEEL FREE TO PULL REQUEST
+PLEASE NOTE:  SOME CHAPTERS DO NOT WORK IN iOS 6/7 - THIS REFERANCE IS GREAT BUT MAY NOT BE PERFECT.  FEEL FREE TO PULL REQUEST
+
+[![Crusher.io Optimization Badge](http://crusher.io/repo/iconoclastlabs/rubymotion_cookbook/badge)](http://crusher.io/repo/iconoclastlabs/rubymotion_cookbook)
 
 [RubyMotion Cookbook](http://iconoclastlabs.github.com/rubymotion_cookbook) is our project to learn RubyMotion, iOS development, and to provide a valuable community
 resource of code examples. We're experts in none of these things so if you have a suggestion, be gentle, it's
