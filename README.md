@@ -1,6 +1,6 @@
 # rubymotion_cookbook #
 
-PLEASE NOTE:  SOME CHAPTERS DO NOT WORK IN iOS 6/7 - THIS REFERANCE IS GREAT BUT MAY NOT BE PERFECT.  FEEL FREE TO PULL REQUEST
+**PLEASE NOTE:**  SOME CHAPTERS DO NOT WORK IN iOS 6/7 - THIS REFERANCE IS GREAT BUT MAY NOT BE PERFECT.  FEEL FREE TO PULL REQUEST
 
 [![Crusher.io Optimization Badge](http://crusher.io/repo/iconoclastlabs/rubymotion_cookbook/badge)](http://crusher.io/repo/iconoclastlabs/rubymotion_cookbook)
 
@@ -24,6 +24,6 @@ attempting to map our examples 1:1 to the cookbook (with creative license) so th
 external resource defeats that purpose.
 
 ## [Please share our Github page with others](http://iconoclastlabs.github.com/rubymotion_cookbook/)
-## [Table of Contents and Progress](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
+## [Table of Contents](https://github.com/IconoclastLabs/rubymotion_cookbook/wiki/Table-of-Contents)
 
 ![contact](https://s3.amazonaws.com/iconoclastweb/email_pic.png)
