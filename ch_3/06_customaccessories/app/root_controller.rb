@@ -11,10 +11,6 @@ class RootController < UIViewController
     view.addSubview(@myTableView)
   end
 
-  def viewDidUnload
-    @myTableView = nil
-  end
-
   # Required for TableView datasource protocol
   # Sets the number of sections for the tableView
   def numberOfSectionsInTableView(tableView)
@@ -77,11 +73,12 @@ class RootController < UIViewController
       # index path of the cll which contains the section and row of the cell
       ownerCellIndexPath = @myTableView.indexPathForCell(ownerCell)
       p "Accessory in index path is tapped.  Index path = #{ownerCellIndexPath}"
-      p "section = #{ownerCellIndexPath.section} and row = #{ownerCellIndexPath.row}"
+      #p "section = #{ownerCellIndexPath.section} and row = #{ownerCellIndexPath.row}"
 
-      if (ownerCellIndexPath.section == 0 && ownerCellIndexPath.row ==1)
+      #if (ownerCellIndexPath.section == 0 && ownerCellIndexPath.row ==1)
         # This is the second row in the first section
-      end
+      #end
+      p "This doesn't work - Needs fixing"
 
     end
 
