@@ -10,8 +10,9 @@ class ArrayNavController < UIViewController
     @label.frame = [[50,50],[350,50]]
     view.addSubview(@label)
     
-    @second_view = SecondNavController.alloc.init
-    self.navigationController.pushViewController(@second_view, animated:'YES')
+    # Not a bad practice to ||= here
+    @second_view ||= SecondNavController.new # new is the same as alloc.init
+    self.navigationController.pushViewController(@second_view, animated: true)
 
   end
 end
