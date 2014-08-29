@@ -8,7 +8,7 @@ class RootController < UIViewController
   end
 
   def handleKeyboardWillHide(notification)
-    @my_text_view.contentInset = UIEdgeInsetZero
+    @my_text_view.contentInset = UIEdgeInsetsZero
   end
 
   def viewWillAppear(animated)
