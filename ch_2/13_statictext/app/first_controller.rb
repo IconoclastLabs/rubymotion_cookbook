@@ -6,7 +6,7 @@ class FirstController < UIViewController
     @label.font = UIFont.boldSystemFontOfSize(14)
     @label.frame = [[50,50],[250,50]]
     @label.numberOfLines = 3
-    @label.adjustsFontSizeToFitWidth = 'YES'
+    @label.adjustsFontSizeToFitWidth = true
     @label.center = view.center
     view.addSubview(@label)
   end
