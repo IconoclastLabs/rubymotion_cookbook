@@ -1,5 +1,6 @@
 class RangePickerController < UIViewController
   def viewDidLoad
+    super
     view.backgroundColor = UIColor.whiteColor
     @mySlider = UISlider.alloc.initWithFrame([[0.0,0.0],[200.0,23.0]])
     @mySlider.center = view.center
@@ -11,7 +12,7 @@ class RangePickerController < UIViewController
     @mySlider.setThumbImage(UIImage.imageNamed('ThumbHighlighted.png'), forState:UIControlStateHighlighted)
     @mySlider.addTarget(self, action:'sliderValueChanged', forControlEvents:UIControlEventValueChanged)
     view.addSubview(@mySlider)
-    
+
     @label = UILabel.new
     @label.text = 'Slider Value:'
     @label.frame = [[0,0],[250,150]]

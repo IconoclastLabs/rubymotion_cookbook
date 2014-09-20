@@ -1,5 +1,6 @@
 class PickingValuesController < UIViewController
   def viewDidLoad
+    super
     self.view.backgroundColor = UIColor.whiteColor
     @myPicker = UIPickerView.new # same ass alloc.init
     @myPicker.showsSelectionIndicator = true

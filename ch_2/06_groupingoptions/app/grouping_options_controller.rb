@@ -1,5 +1,6 @@
 class GroupingOptionsController < UIViewController
   def viewDidLoad
+    super
     view.backgroundColor = UIColor.whiteColor
     options = ["iPhone","iPod","iPad","iMac"]
     @my_segmented_control = UISegmentedControl.alloc.initWithItems(options)

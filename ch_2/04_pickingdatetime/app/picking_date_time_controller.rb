@@ -1,5 +1,6 @@
 class PickingDateTimeController < UIViewController
   def viewDidLoad
+    super
     view.backgroundColor = UIColor.whiteColor
     @myDatePicker = UIDatePicker.alloc.init
     @myDatePicker.center = view.center
