@@ -1,7 +1,8 @@
 class UsingSwitchesController < UIViewController
   def viewDidLoad
+    super
     view.backgroundColor = UIColor.whiteColor
-   
+
     @label = UILabel.new
     @label.text = 'Switch Status'
     @label.frame = [[50,50],[150,50]]
@@ -9,7 +10,7 @@ class UsingSwitchesController < UIViewController
 
     @switch = UISwitch.alloc.initWithFrame([[100, 100], [0, 0]])
     @switch.addTarget(self,action:'switchIsChanged', forControlEvents:UIControlEventValueChanged)
-    view.addSubview(@switch)    
+    view.addSubview(@switch)
   end
 
   def switchIsChanged
