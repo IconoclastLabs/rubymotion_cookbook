@@ -9,11 +9,11 @@ class UsingSwitchesController < UIViewController
     view.addSubview(@label)
 
     @switch = UISwitch.alloc.initWithFrame([[100, 100], [0, 0]])
-    @switch.addTarget(self,action:'switchIsChanged', forControlEvents:UIControlEventValueChanged)
+    @switch.addTarget(self,action:'switch_is_changed', forControlEvents:UIControlEventValueChanged)
     view.addSubview(@switch)
   end
 
-  def switchIsChanged
+  def switch_is_changed
     if @switch.on?
       @label.text = 'On'
     else
