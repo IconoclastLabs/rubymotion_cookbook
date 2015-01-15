@@ -14,7 +14,7 @@ class PickingValuesController < UIViewController
   # Necessary to implement these methods in order to be a datasource
   # - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
   def numberOfComponentsInPickerView pickerView
-    1 
+    1
   end
 
   # - (NSInteger)pickerView:(UIPickerView *)pickerView
