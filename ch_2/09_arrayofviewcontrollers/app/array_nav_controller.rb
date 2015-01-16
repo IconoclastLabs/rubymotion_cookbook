@@ -9,10 +9,10 @@ class ArrayNavController < UIViewController
     @label.text = "viewController Count:  #{current_controllers.size}"
     @label.frame = [[50,50],[350,50]]
     view.addSubview(@label)
-    
+
     # Not a bad practice to ||= here
     @second_view ||= SecondNavController.new # new is the same as alloc.init
-    self.navigationController.pushViewController(@second_view, animated: true)
+    self.navigationController.pushViewController(@second_view, animated: false)
 
   end
 end

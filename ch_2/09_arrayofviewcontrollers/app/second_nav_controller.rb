@@ -10,7 +10,7 @@ class SecondNavController < UIViewController
     @label.frame = [[50,50],[350,50]]
     view.addSubview(@label)
 
-    @third_view = ThirdNavController.new 
-    self.navigationController.pushViewController(@third_view, animated:'YES')
+    @third_view = ThirdNavController.new
+    self.navigationController.pushViewController(@third_view, animated: false)
   end
 end
