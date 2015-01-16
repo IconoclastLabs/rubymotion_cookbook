@@ -1,7 +1,7 @@
-class ThirdNavController < UIViewController
+class FourthNavController < UIViewController
   def viewDidLoad
-    view.backgroundColor = UIColor.greenColor
-    self.title = "Third Nav View"
+    view.backgroundColor = UIColor.purpleColor
+    self.title = "Fourth Nav View"
 
     current_controllers = self.navigationController.viewControllers
 
@@ -9,8 +9,5 @@ class ThirdNavController < UIViewController
     @label.text = "viewController Count:  #{current_controllers.size}"
     @label.frame = [[50,50],[350,50]]
     view.addSubview(@label)
-
-    @fourth_view = FourthNavController.new
-    self.navigationController.pushViewController(@fourth_view, animated: false)
   end
 end
