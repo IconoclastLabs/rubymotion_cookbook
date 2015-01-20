@@ -3,9 +3,10 @@ class RootController < UIViewController
     view.backgroundColor = UIColor.grayColor
 
     # Regular button
-    @my_button = UIButton.buttonWithType(UIButtonTypeSystem)
+    @my_button = UIButton.buttonWithType(UIButtonTypeRoundedRect)
     @my_button.frame = [[110,150],[100,37]]
     @my_button.layer.cornerRadius = 10
+    @my_button.setTitleColor(UIColor.blackColor, forState:UIControlStateNormal)
     @my_button.backgroundColor = UIColor.whiteColor
     @my_button.setTitle("Press Me", forState:UIControlStateNormal)
     @my_button.setTitle("Impressive!", forState:UIControlStateHighlighted)
