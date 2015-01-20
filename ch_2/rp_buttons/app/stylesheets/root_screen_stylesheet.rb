@@ -13,4 +13,13 @@ class RootScreenStylesheet < ApplicationStylesheet
 		#st.view.setTitle("Impressive!", forState:UIControlStateHighlighted)
 		st.text_highlighted = "Impressive!"
 	end
+	def img_button st
+		st.frame = {l: 110, t: 250, w: 120, h: 37}
+		st.corner_radius = 10
+		st.background_image_normal = image.resource('NormalBlueButton')
+		st.background_image_highlighted = image.resource('HighlightedBlueButton')
+		st.text = "Press Me"
+		st.color = color.black
+		st.text_highlighted = "Impressive!"
+	end
 end
