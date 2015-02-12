@@ -6,5 +6,5 @@ Motion::Project::App.setup do |app|
   app.name = '2.20 uisplitview'
   # iPad has to be manually added
   app.device_family = [:ipad, :iphone]
-  # or call it like then when testing: rake simulator device_family=ipad
+  # or call it like then when testing: rake simulator device_family=iphone
 end
