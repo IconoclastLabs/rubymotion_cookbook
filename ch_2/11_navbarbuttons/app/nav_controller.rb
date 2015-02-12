@@ -17,7 +17,7 @@ class NavController < UIViewController
 
   def performAdd
     @secondary_controller = SecondaryController.alloc.init
-    self.navigationController.pushViewController(@secondary_controller, animated:'NO')
+    self.navigationController.pushViewController(@secondary_controller, animated: true)
   end
 
 end
