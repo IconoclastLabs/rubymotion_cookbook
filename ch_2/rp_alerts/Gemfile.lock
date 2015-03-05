@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/fvonhoven/rmq_alerts.git
+  revision: e1b6194907d9c2e0aba74d0701e92956e756c8a0
+  specs:
+    rmq_alerts (0.2)
+      ruby_motion_query (>= 0.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -56,8 +63,6 @@ GEM
       motion-cocoapods
       motion_print
       ruby_motion_query (~> 1.0)
-    rmq_alerts (0.2)
-      ruby_motion_query (>= 0.9.0)
     ruby_motion_query (1.1.0)
     thread_safe (0.3.4)
     tzinfo (1.2.2)
@@ -72,4 +77,4 @@ PLATFORMS
 DEPENDENCIES
   rake
   redpotion
-  rmq_alerts
+  rmq_alerts!
