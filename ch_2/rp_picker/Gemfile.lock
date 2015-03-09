@@ -1,0 +1,72 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ProMotion (2.2.0)
+      methadone (~> 1.7)
+    activesupport (4.2.0)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    claide (0.7.0)
+    cocoapods (0.35.0)
+      activesupport (>= 3.2.15)
+      claide (~> 0.7.0)
+      cocoapods-core (= 0.35.0)
+      cocoapods-downloader (~> 0.8.0)
+      cocoapods-plugins (~> 0.3.1)
+      cocoapods-trunk (~> 0.4.1)
+      cocoapods-try (~> 0.4.2)
+      colored (~> 1.2)
+      escape (~> 0.0.4)
+      molinillo (~> 0.1.2)
+      nap (~> 0.8)
+      open4 (~> 1.3)
+      xcodeproj (~> 0.20.2)
+    cocoapods-core (0.35.0)
+      activesupport (>= 3.2.15)
+      fuzzy_match (~> 2.0.4)
+      nap (~> 0.8.0)
+    cocoapods-downloader (0.8.1)
+    cocoapods-plugins (0.3.2)
+      nap
+    cocoapods-trunk (0.4.1)
+      nap (>= 0.8)
+      netrc (= 0.7.8)
+    cocoapods-try (0.4.3)
+    colored (1.2)
+    escape (0.0.4)
+    fuzzy_match (2.0.4)
+    i18n (0.7.0)
+    json (1.8.2)
+    methadone (1.8.0)
+      bundler
+    minitest (5.5.1)
+    molinillo (0.1.2)
+    motion-cocoapods (1.7.0)
+      cocoapods (>= 0.34)
+    motion_print (0.0.4)
+    nap (0.8.0)
+    netrc (0.7.8)
+    open4 (1.3.4)
+    rake (10.4.2)
+    redpotion (0.5.0)
+      ProMotion (~> 2.2)
+      motion-cocoapods
+      motion_print
+      ruby_motion_query (~> 1.0)
+    ruby_motion_query (1.0.0)
+    thread_safe (0.3.4)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    xcodeproj (0.20.2)
+      activesupport (>= 3)
+      colored (~> 1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rake
+  redpotion
