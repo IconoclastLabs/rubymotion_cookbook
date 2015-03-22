@@ -1,5 +1,5 @@
 class RootScreen < PM::Screen
-	title "RedPotion Switches"
+	title "RedPotion Picker"
 	stylesheet RootScreenStylesheet
 
 	def on_load
