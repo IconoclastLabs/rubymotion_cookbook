@@ -3,4 +3,4 @@ source 'https://rubygems.org'
 gem 'rake'
 # Add your dependencies here:
 gem 'redpotion'
-gem 'rmq_alerts', github: 'fvonhoven/rmq_alerts'
+gem 'RedAlert'
