@@ -3,8 +3,7 @@ class RootScreen < PM::Screen
 	stylesheet RootScreenStylesheet
 
 	def on_load
-		# @picker = append!(UIPickerView, :picker)
-
+    open_tab_bar FirstTabScreen.new(nav_bar:true), SecondTabScreen.new(nav_bar: true), ThirdTabScreen.new(nav_bar: true)
 	end
 
 end
