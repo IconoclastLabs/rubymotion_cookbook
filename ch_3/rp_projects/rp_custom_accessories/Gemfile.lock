@@ -61,8 +61,8 @@ GEM
       rake
       ruby_motion_query (~> 1.3.4)
     ruby_motion_query (1.3.4)
-    thread_safe (0.3.5)
-    tzinfo (1.2.2)
+    thread_safe (0.3.6)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     xcodeproj (0.23.1)
       activesupport (>= 3)
